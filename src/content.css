@@ -1,0 +1,36 @@
+.content-container{
+    height: calc(100vh - 153px - 100px);
+    display: flex;
+    padding: 20px 0px;
+    gap: 15px;
+    
+}
+
+
+
+.bio{
+    padding-top: 50px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    font-size: 20px;
+}
+
+
+.first-text span{
+    color: #D87D4A;
+}
+
+.second-text span{
+    color: #007aff;
+}
+
+.photo-of-me{
+    width: 70%;
+    height: calc(100vh - 153px - 87px - 50px);
+    background-image: url("./assets/Me.jpg");
+    background-size: cover;
+    background-position: center ;
+    background-repeat: no-repeat;
+}

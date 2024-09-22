@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+
+  a{
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  a:hover{
+    color:#D87D4A;
+  }
+
+
+.logo{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+ul{
+    list-style-type: none;
+  }
+
+  li{
+    cursor: pointer;
+  }
+
+  li:hover{
+    color: #D87D4A;
+  }
+
+  .container{
+  
+    width: 90%;
+    max-width: 1110px;
+    margin: auto;
+
+  }
+
+
