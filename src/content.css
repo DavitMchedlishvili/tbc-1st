@@ -1,5 +1,5 @@
 .content-container{
-    height: calc(100vh - 153px - 100px);
+    height: calc(100vh - 153px - 102px);
     display: flex;
     padding: 20px 0px;
     gap: 15px;
