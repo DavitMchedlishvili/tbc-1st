@@ -7,7 +7,7 @@ const Content = () => {
       
       <div className='bio'> 
       <h1> It's me Mario</h1>
-        <p className='first-text'>Hi, my name is <span>Davit Mchedlishvili</span>, I love to introduce myself to you as a <span>Web-Developer</span>.
+        <p className='first-text'>Hi, my name is <span>Davit Mchedlishvili</span>, I would love to introduce myself to you as a <span>Web-Developer</span>.
           Right now I have no experience in this field but one day I might be your co-worker... who knows...
         </p>
 
