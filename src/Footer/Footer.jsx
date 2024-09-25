@@ -14,6 +14,7 @@ const Footer = () => {
             inventore nemo.
           </p>
         </div>
+
         <div className="footer-right">
           <ul className="footer-nav-links">
             <li>Home</li>
@@ -22,6 +23,7 @@ const Footer = () => {
             <li>Contact Us</li>
           </ul>
         </div>
+        
       </div>
     </footer>
   );

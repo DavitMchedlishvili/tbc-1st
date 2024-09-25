@@ -1,8 +1,11 @@
 
 footer{
+
     background-color: #191919;
     color: white;
     width: 100%;
+    
+
 }
 
 .footer-container{
@@ -36,6 +39,6 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items:last baseline;
+    /* align-items:last baseline; */
     gap: 5px;
 }
