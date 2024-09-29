@@ -1,5 +1,6 @@
 import React from 'react'
 import "./header.css"
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -8,13 +9,13 @@ const Header = () => {
         <a className='logo' href="#">Header</a>
         <nav >
           <ul className='navigation'>
-            <li>Home</li>
-            <li>Store</li>
-            <li>About</li>
-            <li>Contact Us</li>
+            <Link to={"/"}>Home</Link>
+            <Link to={"/store"}>Store</Link>
+            <Link to={"/about"}>About</Link>
+            <Link to={"/contact"}>Contact Us</Link>
           </ul>
         </nav>
-        <a className='git-btn' href="https://github.com/DavitMchedlishvili">GitHub</a>
+        <Link className='git-btn' href="https://github.com/DavitMchedlishvili">GitHub</Link>
       </div>
     </header>
   )

@@ -1,9 +1,9 @@
-import React from 'react'
-import "./content.css"
+
+import "./home.css"
 import ItemCard from '../ItemCard/ItemCard'
 
 
-const Content = ({items}) => {
+const Home = ({items}) => {
   return (
     <main >
       
@@ -25,4 +25,8 @@ const Content = ({items}) => {
   )
 }
 
-export default Content
+
+
+
+
+export default Home
