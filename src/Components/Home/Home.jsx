@@ -5,7 +5,7 @@ import ItemCard from '../ItemCard/ItemCard'
 
 const Home = ({items}) => {
   return (
-    <main >
+    <main>
       
       <div className="grid-container container">
       {items.map((item, index) => (
