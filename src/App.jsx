@@ -1,17 +1,18 @@
 
 import './App.css'
-import Home from './Home/Home'
-import data from './data'
-import Footer from './Footer/Footer'
-import Header from './Header/Header'
+import Layouts from './Layouts/Layouts'
+import Routers from './Routes/Routers'
+
 
 function App() {
  
   return (
     <>
-    <Header/>
-    <Home items= {data}/>
-    <Footer/>
+    <Layouts>
+    <Routers/>
+    </Layouts>
+
+    
     </>
   )
 }

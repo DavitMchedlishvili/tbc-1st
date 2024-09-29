@@ -8,12 +8,14 @@ const Header = () => {
       <div className="header-container container">
         <a className='logo' href="#">Header</a>
         <nav >
-          <ul className='navigation'>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/store"}>Store</Link>
-            <Link to={"/about"}>About</Link>
-            <Link to={"/contact"}>Contact Us</Link>
-          </ul>
+          <div className='navigation'>
+            <Link to="/">
+              Home
+            </Link>
+            <Link to="/store">Store</Link>
+            <Link to="/about">About</Link>
+            <Link to="/contact">Contact Us</Link>
+          </div>
         </nav>
         <Link className='git-btn' href="https://github.com/DavitMchedlishvili">GitHub</Link>
       </div>
