@@ -8,9 +8,9 @@ const Home = ({items}) => {
     <main>
       
       <div className="grid-container container">
-      {items.map((item, index) => (
+      {items.map((item, id) => (
           <ItemCard 
-          key = {index}
+          key = {id}
           title = {item.title}
           photo = {item.photo}
           description = {item.description}

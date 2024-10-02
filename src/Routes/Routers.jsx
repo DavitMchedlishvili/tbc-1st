@@ -5,11 +5,13 @@ import About from '../Pages/About/About'
 import Contact from '../Pages/Contact/Contact'
 import data from '../data'
 import Assignment from '../Components/Assignment'
+import Blog from '../Pages/Blog/Blog'
 
 const Routers = () => {
   return (
     <Routes>
        <Route path='/' element= {<Home items = {data}/>} />
+       <Route path='/blog' element= {<Blog items= {data}/>}></Route>
        <Route path='/about' element= {<About/>} />
        <Route path='/contact' element= {<Contact/>} />
        <Route path='/assignment-3' element={<Assignment/>} />
