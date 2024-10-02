@@ -17,7 +17,7 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </div>
         </nav>
-        <Link className='git-btn' to="https://github.com/DavitMchedlishvili">GitHub</Link>
+        <Link className='profile-btn' to="/profile">Profile</Link>
       </div>
     </header>
   )
