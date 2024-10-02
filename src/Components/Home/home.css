@@ -1,17 +1,4 @@
-main{
-   
-    height: 100%;
-    display: flex;
-    flex: 1;
-    padding: 20px 0px;
-    gap: 15px;
-    
-    align-items: center;
-    justify-content: center;
 
-    background-color: #e9ecef;
-    
-}
 
 
 
