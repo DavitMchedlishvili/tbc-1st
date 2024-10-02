@@ -6,6 +6,7 @@ import Contact from '../Pages/Contact/Contact'
 import data from '../data'
 import Assignment from '../Components/Assignment'
 import Blog from '../Pages/Blog/Blog'
+import Profile from '../Pages/Profile/Profile'
 
 const Routers = () => {
   return (
@@ -14,6 +15,7 @@ const Routers = () => {
        <Route path='/blog' element= {<Blog items= {data}/>}></Route>
        <Route path='/about' element= {<About/>} />
        <Route path='/contact' element= {<Contact/>} />
+       <Route path='/profile' element= {<Profile/>}/>
        <Route path='/assignment-3' element={<Assignment/>} />
     </Routes>
   )
