@@ -1,6 +1,6 @@
 
 import "./home.css"
-import ItemCard from '../ItemCard/ItemCard'
+import ItemCard from '../Cards/ItemCard/ItemCard'
 
 
 const Home = ({items}) => {
