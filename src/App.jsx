@@ -11,14 +11,6 @@ function App() {
   return (
     <>
     <Home />
-    
-    
-    
-    
-  
-    
-
-    
     </>
   )
 }

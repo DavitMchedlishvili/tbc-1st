@@ -1,6 +1,6 @@
-import Word from "./assets/Word.png";
-import Excel from "./assets/Excel.png";
-import PowerPoint from "./assets/PowerPoint.png";
+import Word from "../public/assets/Word.png";
+import Excel from "../public/assets/Excel.png"
+import PowerPoint from "../public/assets/PowerPoint.png";
 
 const data = [
   {
