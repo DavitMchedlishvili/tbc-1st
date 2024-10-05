@@ -1,5 +1,4 @@
-import React from "react";
-import "./about.css"
+import "./index.css"
 
 const About = () => {
   return (
@@ -9,10 +8,7 @@ const About = () => {
         <h1>Who am I and What I want?</h1>
 
         <p className="site-description">
-          Hi, this project right now, does not do anything special.. its just a
-          site, for homeworks and just workout in codeing, but at the end of the
-          day I'll be ecommerce site... I will change in the dark... cause Im
-          BATMAN!!!!!
+          Lorem ipsum
         </p>
         </div>
       </main>
