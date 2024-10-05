@@ -1,58 +1,46 @@
-import React from 'react'
+const obj = {
+  id: "10002",
 
+  name: "Eco-Friendly Water Bottle",
 
-  const obj = {
+  description: "Stay hydrated with our durable, eco-friendly water bottle.",
 
-    id: '10002',
+  price: 14.99,
 
-    name: 'Eco-Friendly Water Bottle',
+  currency: "USD",
 
-    description: 'Stay hydrated with our durable, eco-friendly water bottle.',
+  imageURL: "https://example.com/images/product-10002.jpg",
+};
 
-    price: 14.99,
-
-    currency: 'USD',
-
-    imageURL: 'https://example.com/images/product-10002.jpg',
-
-  };
-
-
-
-  const list = (
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Key</th>
-          <th>Value</th>
-          <th>Position</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(obj).reduce((acc, [key, value], index) => {
-          return acc.concat(
-            <tr key={key}>
-              <td>{key}</td>
-              <td>{value}</td>
-              <td>{index}</td>
-            </tr>
-          );
-        }, [])}
-      </tbody>
-    </table>
-  );
+const list = (
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(obj).reduce((acc, [key, value], index) => {
+        return acc.concat(
+          <tr key={key}>
+            <td>{key}</td>
+            <td>{value}</td>
+            <td>{index}</td>
+          </tr>
+        );
+      }, [])}
+    </tbody>
+  </table>
+);
 
 const Assignment = () => {
   return (
     <main>
-        <div>{list}</div>
+      <div>{list}</div>
     </main>
-    
-  )
-}
+  );
+};
 
-export default Assignment
-
-
-
-
+export default Assignment;
