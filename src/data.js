@@ -1,11 +1,12 @@
 import Word from "../public/assets/Word.png";
-import Excel from "../public/assets/Excel.png"
+
 import PowerPoint from "../public/assets/PowerPoint.png";
 
 const data = [
   {
     id: 1,
-    title: "Microsoft Word: The Ubiquitous Word Processor Dominating Global Use",
+    title:
+      "Microsoft Word: The Ubiquitous Word Processor Dominating Global Use",
     description:
       "    Microsoft Word is a word processing software developed by Microsoft. It allows users to create, edit, and format documents, including text, images, tables, and other elements. Word is widely used for writing letters, reports, essays, and other professional documents. It offers features like spell check, grammar suggestions, templates, and collaborative tools, making it versatile for both personal and business use.",
     photo: Word,
@@ -20,7 +21,8 @@ const data = [
   },
   {
     id: 2,
-    title: "Microsoft PowerPoint: Presentation Stats That Show Its Global Impact",
+    title:
+      "Microsoft PowerPoint: Presentation Stats That Show Its Global Impact",
     description:
       "Microsoft Excel is a spreadsheet software developed by Microsoft. It is used for organizing, analyzing, and visualizing data through tables, formulas, charts, and graphs. Excel is widely used for tasks such as budgeting, data analysis, financial modeling, and project management. Its powerful functions, like pivot tables and macros, make it a versatile tool for both simple and complex data manipulation.",
     photo: PowerPoint,

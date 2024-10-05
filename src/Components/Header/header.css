@@ -1,5 +1,4 @@
 header{
-    /* border: red solid 1px; */
     width: 100%;
     
     color: white;
@@ -18,7 +17,6 @@ header{
 
 
 .navigation{
-    
     display: flex;
     justify-content: space-between;
     gap: 30px;
@@ -35,3 +33,4 @@ header{
     background-color: #db946b;
     color: white;
 }
+
