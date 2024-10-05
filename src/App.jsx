@@ -1,19 +1,9 @@
 import Home from "./app/home/page";
-
-
 function App() {
  
   return (
     <>
     <Home />
-    
-    
-    
-    
-  
-    
-
-    
     </>
   )
 }
