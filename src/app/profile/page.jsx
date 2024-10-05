@@ -1,5 +1,5 @@
-import React from 'react'
 import "./index.css"
+import Me from "../../../public/assets/Me.jpg"
 
 const Profile = () => {
   return (
@@ -7,7 +7,7 @@ const Profile = () => {
         <div className="profileContainer">
             <div className="profileCard">
                 <img 
-                src="" 
+                src={Me.src} 
                 alt="Profile" 
                 className="profilePicture"
                 />
