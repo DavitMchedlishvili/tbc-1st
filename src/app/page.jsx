@@ -1,22 +1,22 @@
+import "./index.css"
+import ItemCard from "./components/Cards/ItemCard/ItemCard"
+import data from "../data"
 
-import "./home.css"
-import ItemCard from '../Cards/ItemCard/ItemCard'
-
-
-const Home = ({items}) => {
+const Home = ({}) => {
   return (
     <main>
       
       <div className="grid-container container">
-      {items.map((item, id) => (
+      {data.map((item, id) => (
           <ItemCard 
           key = {id}
           title = {item.title}
-          photo = {item.photo}
+          photo = {item.photo.src}
           description = {item.description}
           btnColor = {item.btnColor}
           />
         ))}
+        {/* <p>salami</p> */}
       </div>
       
 
