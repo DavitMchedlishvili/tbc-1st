@@ -11,13 +11,14 @@ export const metadata = {
 // eslint-disable-next-line react/prop-types
 export default function RootLayout({ children }) {
   return (
-      
+    <html>
       <body>
         <Header /> 
         <div id="root">{children}</div>
           
         <Footer />
       </body>
+    </html>
   );
 }
 
