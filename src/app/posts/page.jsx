@@ -26,9 +26,9 @@ const PostsFetch = () => {
     console.log(posts);
     
   return (
-    <div className="blogContainer">
-      <h1 className="blogTitle">Posts</h1>
-      <div className="blogPosts">
+    <div className="postContainer">
+      <h1 className="postTitle">Posts</h1>
+      <div className="posts">
         {posts.map((post) => (
           <div key={post.id} className="post">
             <h2 className="postTitle">{post.title}</h2>
@@ -43,10 +43,10 @@ const PostsFetch = () => {
                   <p>{post.reactions.dislikes}</p>
                 </div>
             </div>
-            <p className="postTags">Tags: {post.tags.map((tag) => (
-              <div>
+            <p className="postTags">Tags: {post.tags.map((tag, index) => (
+              <span key={index}>
                 #{tag}
-              </div>
+              </span>
               ))} </p>  
             <p className="postViwes">views: {post.views} </p>
   
