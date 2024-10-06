@@ -25,16 +25,8 @@ const PostsFetch = () => {
       <h1 className="postTitle">Posts</h1>
 
       {loading ? (
-        <div className="skeleton-posts">
-          {[...Array(5)].map((_, index) => (
-            <div key={index} className="skeleton-post">
-              <div className="skeleton-title"></div>
-              <div className="skeleton-content"></div>
-              <div className="skeleton-reactions"></div>
-              <div className="skeleton-tags"></div>
-              <div className="skeleton-views"></div>
-            </div>
-          ))}
+        <div className="spinner-container">
+          <div className="spinner"></div>
         </div>
       ) : (
         <div className="posts">
