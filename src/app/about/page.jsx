@@ -3,7 +3,7 @@ import "./index.css"
 const About = () => {
   return (
     <>
-      <main>
+    
         <div className="about-container container">
         <h1>Who am I and What I want?</h1>
 
@@ -11,7 +11,7 @@ const About = () => {
           Lorem ipsum
         </p>
         </div>
-      </main>
+      
     </>
   );
 };

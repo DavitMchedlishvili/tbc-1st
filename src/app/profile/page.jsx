@@ -3,7 +3,7 @@ import Me from "../../../public/assets/Me.jpg"
 
 const Profile = () => {
   return (
-    <main>
+   
         <div className="profileContainer">
             <div className="profileCard">
                 <img 
@@ -43,7 +43,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-    </main>
+    
   )
 }
 

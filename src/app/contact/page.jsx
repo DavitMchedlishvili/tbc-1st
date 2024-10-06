@@ -2,7 +2,7 @@ import "./index.css";
 
 const Contact = () => {
   return (
-    <main>
+    
       <div className="contact-container container">
         <h2>Contact Us</h2>
         <form>
@@ -49,7 +49,7 @@ const Contact = () => {
           <button type="submit">Submit</button>
         </form>
       </div>
-    </main>
+    
   );
 };
 
