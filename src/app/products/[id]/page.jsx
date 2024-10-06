@@ -16,13 +16,14 @@ const ProductDetail = ({ params }) => {
   }, [id]);
 
   if (!product) return <div>Loading...</div>;
+  console.log(product);
 
   return (
     <div>
       <h1>{product.title}</h1>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
-      <img src={product.imageUrl} alt={product.title} />
+      <img src={product.images} alt={product.title} />
     </div>
   );
 };
