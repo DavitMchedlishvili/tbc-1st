@@ -30,7 +30,7 @@ const ProductFetch = () => {
           <div className="spinner"></div>
 
           <div className="skeleton-grid">
-            {[...Array(6)].map((_, index) => (
+            {[...Array(8)].map((_, index) => (
               <div key={index} className="skeleton-card"></div>
             ))}
           </div>
