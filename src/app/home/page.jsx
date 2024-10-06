@@ -1,7 +1,7 @@
 import "./index.css"
 import ItemCard from "../components/Cards/ItemCard/ItemCard"
 import data from "../../data"
-import { ProductFetch } from "../../Products/ProductFetch"
+
 
 
 const Home = () => {

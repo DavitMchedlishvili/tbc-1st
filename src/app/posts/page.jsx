@@ -1,35 +1,33 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 
+const PostsFetch = () => {
 
- const ProductFetch = () => {
-
-    const [product, setProduct] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     
 
     useEffect(() => {
       async function fetchData() {
-        const res = await fetch('https://dummyjson.com/products');
+        const res = await fetch('https://dummyjson.com/posts');
         const data = await res.json();
         
-        setProduct(data.products);
+        setPosts(data.posts);
       }
   
       fetchData();
     }, []);
-    
-    console.log("2nd log", product)
 
   return (
-   <>
+    <div>
+          <>
    <h1>halo</h1>
 
     <div>
       <h1>List of Items</h1>
       <ul>
-        {product.map((item) => (
+        {posts.map((item) => (
           <li key={item.id}>
             <h2>{item.title}</h2>
             <p>{item.description}</p>
@@ -38,9 +36,8 @@ import { useEffect, useState } from "react"
       </ul>
     </div>
    </>
-    
+    </div>
   )
 }
 
-
-export default ProductFetch
+export default PostsFetch
