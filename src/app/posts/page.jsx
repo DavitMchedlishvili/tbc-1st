@@ -3,38 +3,36 @@
 import { useEffect, useState } from "react";
 import "./index.css";
 import Like from "../../../public/assets/like.png";
-import Dislike from "../../../public/assets/dislike.png";
+import Dislike from "../../../public/assets/dislike.png"
+import Link from 'next/link';
+
 
 const PostsFetch = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("https://dummyjson.com/posts");
-      const data = await res.json();
+    useEffect(() => {
+      async function fetchData() {
+        const res = await fetch('https://dummyjson.com/posts');
+        const data = await res.json();
+        
+        setPosts(data.posts);
+      }
+      
+      fetchData();
+    }, []);
 
-      setPosts(data.posts);
-      setLoading(false);
-    }
-    fetchData();
-  }, []);
-
+    console.log(posts);
+    
   return (
     <div className="postContainer">
       <h1 className="postTitle">Posts</h1>
-
-      {loading ? (
-        <div className="spinner-container">
-          <div className="spinner"></div>
-        </div>
-      ) : (
-        <div className="posts">
-          {posts.map((post) => (
-            <div key={post.id} className="post">
-              <h2 className="postTitle">{post.title}</h2>
-              <p className="postContent">{post.body}</p>
-              <div className="reactions">
+      <div className="posts">
+        {posts.map((post) => (
+          <div key={post.id} className="post">
+            <h2 className="postTitle">{post.title}</h2>
+            <p className="postContent">{post.body}</p>
+            <div className="reactions">
                 <div className="like">
                   <img src={Like.src} alt="like" />
                   <p>{post.reactions.likes}</p>
