@@ -9,12 +9,8 @@ const Header = () => {
         <Link className='logo' href="/">Header</Link>
         <nav >
           <div className='navigation'>
-            <Link href="/products">
-              Products
-            </Link>
-            <Link href="/posts">
-              Posts
-            </Link>
+            <Link href="/products">Products</Link>
+            <Link href="/posts">Posts</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/about">About</Link>
             <Link href="/contact">Contact Us</Link>
