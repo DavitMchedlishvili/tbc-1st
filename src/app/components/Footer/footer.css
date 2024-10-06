@@ -28,10 +28,14 @@ footer{
     text-align: center;
 }
 
+.navList{
+    display: flex;
+}
+
 .navList li{
     text-align: center;
     list-style-type: none;
-    padding: 0.4rem;
+    padding: 0.5rem;
     cursor: pointer;
 }
 
@@ -46,6 +50,10 @@ footer{
 
 .footerContext li{
     list-style-type: none;
+}
+
+.social-networks{
+    display: flex;
 }
 
 .social-networks li{
