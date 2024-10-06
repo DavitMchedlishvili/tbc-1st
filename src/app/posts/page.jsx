@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import "./index.css";
 import Like from "../../../public/assets/like.png";
 import Dislike from "../../../public/assets/dislike.png"
@@ -8,10 +8,8 @@ import Link from 'next/link';
 
 
 const PostsFetch = () => {
-
-    const [posts, setPosts] = useState([]);
-
-    
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       async function fetchData() {
@@ -24,6 +22,7 @@ const PostsFetch = () => {
       fetchData();
     }, []);
 
+    console.log(posts);
     
   return (
     <div className="postContainer">
@@ -31,9 +30,7 @@ const PostsFetch = () => {
       <div className="posts">
         {posts.map((post) => (
           <div key={post.id} className="post">
-           <Link className='postLink' href={`/posts/${post.id}`}>
-           <h2 className="postTitle">{post.title}</h2>
-           </Link> 
+            <h2 className="postTitle">{post.title}</h2>
             <p className="postContent">{post.body}</p>
             <div className="reactions">
                 <div className="like">
@@ -44,19 +41,20 @@ const PostsFetch = () => {
                   <img src={Dislike.src} alt="dislike" />
                   <p>{post.reactions.dislikes}</p>
                 </div>
+              </div>
+              <p className="postTags">
+                Tags:{" "}
+                {post.tags.map((tag, index) => (
+                  <span key={index}>#{tag}</span>
+                ))}{" "}
+              </p>
+              <p className="postViwes">views: {post.views}</p>
             </div>
-            <p className="postTags">Tags: {post.tags.map((tag, index) => (
-              <span key={index}>
-                #{tag}
-              </span>
-              ))} </p>  
-            <p className="postViwes">views: {post.views} </p>
-  
-          </div>
-        ))}
+          ))}
         </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default PostsFetch
+export default PostsFetch;
