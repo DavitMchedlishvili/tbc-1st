@@ -32,6 +32,11 @@
   margin-bottom: 0.625rem;
 }
 
+
+.postLink{
+    color: black;
+}
+
 .postViwes {
   font-size: 0.9rem;
   color: gray;

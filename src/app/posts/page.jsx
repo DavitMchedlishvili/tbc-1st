@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./index.css";
 import Like from "../../../public/assets/like.png";
 import Dislike from "../../../public/assets/dislike.png"
-import Link from 'next/link';
+import Link from "next/link";
 
 
 const PostsFetch = () => {
@@ -30,7 +30,9 @@ const PostsFetch = () => {
       <div className="posts">
         {posts.map((post) => (
           <div key={post.id} className="post">
+            <Link className="postLink" href={`/posts/${post.id}`}>
             <h2 className="postTitle">{post.title}</h2>
+            </Link>
             <p className="postContent">{post.body}</p>
             <div className="reactions">
                 <div className="like">
@@ -52,7 +54,7 @@ const PostsFetch = () => {
             </div>
           ))}
         </div>
-      )}
+      
     </div>
   );
 };
