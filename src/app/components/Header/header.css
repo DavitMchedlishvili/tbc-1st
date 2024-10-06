@@ -34,3 +34,10 @@ header{
     color: white;
 }
 
+.header-container a{
+    cursor: pointer;
+  }
+
+.header-container a:hover{
+    color: #D87D4A;
+  }

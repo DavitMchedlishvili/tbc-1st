@@ -5,7 +5,7 @@ import data from "../../data"
 const Blog = () => {
   console.log(data[0].article);
   return (
-    <main>
+    
 
         <div className='article-container container'>
          
@@ -18,7 +18,7 @@ const Blog = () => {
             />
           ))}
         </div>
-    </main>
+    
   )
 }
 

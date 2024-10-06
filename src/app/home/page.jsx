@@ -6,7 +6,7 @@ import data from "../../data"
 
 const Home = () => {
   return (
-    <main>
+    
       
       <div className="grid-container container">
       {data.map((item, id) => (
@@ -23,7 +23,7 @@ const Home = () => {
       
 
       
-    </main>
+    
   )
 }
 

@@ -5,6 +5,7 @@ footer{
     color: white;
     width: 100%;
     
+    
 
 }
 
@@ -42,3 +43,13 @@ footer{
     /* align-items:last baseline; */
     gap: 5px;
 }
+
+.footer-container a{
+    cursor: pointer;
+  }
+
+ .footer-container a:hover{
+    color: #D87D4A;
+  }
+
+  
