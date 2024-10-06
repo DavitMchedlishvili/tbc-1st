@@ -1,55 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
 
 footer{
-
     background-color: #191919;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerContext h3{
+    text-transform: uppercase;
+    font: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
     color: white;
-    width: 100%;
-    
-    
-
 }
 
-.footer-container{
-    display: flex;
-    justify-content: space-between;
-    border-top: 2px solid #D87D4A;
-    gap: 10px;
+.footerContext p{
+    padding: 0.5rem;
+    color: white;
 }
 
-
-.footer-left{
-    width: 70%;
-    padding: 15px 0px 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.footerContext .navList ul{
+    text-align: center;
 }
 
-
-
-
-
-.footer-right{
-    
-    padding: 15px 0px 50px;
-    width: 30%; 
-}
-.footer-nav-links{
-   
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    /* align-items:last baseline; */
-    gap: 5px;
-}
-
-.footer-container a{
+.navList li{
+    text-align: center;
+    list-style-type: none;
+    padding: 0.4rem;
     cursor: pointer;
-  }
+}
 
- .footer-container a:hover{
-    color: #D87D4A;
-  }
+.navList li:hover{
+    background-color: #db946b;
+    color: white;
+}
 
-  
+.footerContext img{
+    max-width: 2rem;
+}
+
+.footerContext li{
+    list-style-type: none;
+}
+
+.social-networks li{
+    text-align: center;
+    padding: 0.5rem;
+}

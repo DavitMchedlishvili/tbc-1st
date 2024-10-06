@@ -1,6 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import "./index.css";
+import Like from "../../../public/assets/like.png";
+import Dislike from "../../../public/assets/dislike.png"
+
 
 const PostsFetch = () => {
 
@@ -15,27 +19,40 @@ const PostsFetch = () => {
         
         setPosts(data.posts);
       }
-  
+      
       fetchData();
     }, []);
 
+    console.log(posts);
+    
   return (
-    <div>
-          <>
-   <h1>halo</h1>
-
-    <div>
-      <h1>List of Items</h1>
-      <ul>
-        {posts.map((item) => (
-          <li key={item.id}>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </li>
+    <div className="blogContainer">
+      <h1 className="blogTitle">Posts</h1>
+      <div className="blogPosts">
+        {posts.map((post) => (
+          <div key={post.id} className="post">
+            <h2 className="postTitle">{post.title}</h2>
+            <p className="postContent">{post.body}</p>
+            <div className="reactions">
+                <div className="like">
+                  <img src={Like.src} alt="like" />
+                  <p>{post.reactions.likes}</p>
+                </div>
+                <div className="dislike">
+                  <img src={Dislike.src} alt="dislike" />
+                  <p>{post.reactions.dislikes}</p>
+                </div>
+            </div>
+            <p className="postTags">Tags: {post.tags.map((tag) => (
+              <div>
+                #{tag}
+              </div>
+              ))} </p>  
+            <p className="postViwes">views: {post.views} </p>
+  
+          </div>
         ))}
-      </ul>
-    </div>
-   </>
+        </div>
     </div>
   )
 }
