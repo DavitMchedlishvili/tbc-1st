@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import "./index.css";
+import Link from "next/link";
 
 const ProductFetch = () => {
   const [products, setProducts] = useState([]);
@@ -39,16 +40,18 @@ const ProductFetch = () => {
         <div className="product-grid">
           {products.map((item) => (
             <div key={item.id} className="product-card">
-              <img
-                src={item.thumbnail}
-                alt={item.title}
-                className="product-image"
-              />
-              <div className="product-info">
-                <h2>{item.title}</h2>
-                <p className="product-description">{item.description}</p>
-                <p className="product-price">${item.price}</p>
-              </div>
+              <Link href={`/products/${item.id}`}>
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="product-image"
+                />
+                <div className="product-info">
+                  <h2>{item.title}</h2>
+                  <p className="product-description">{item.description}</p>
+                  <p className="product-price">${item.price}</p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
