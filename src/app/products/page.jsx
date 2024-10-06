@@ -1,46 +1,39 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import "./index.css";
 
+const ProductFetch = () => {
+  const [product, setProduct] = useState([]);
 
- const ProductFetch = () => {
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("https://dummyjson.com/products");
+      const data = await res.json();
 
-    const [product, setProduct] = useState([]);
+      setProduct(data.products);
+    }
 
-    
-
-    useEffect(() => {
-      async function fetchData() {
-        const res = await fetch('https://dummyjson.com/products');
-        const data = await res.json();
-        
-        setProduct(data.products);
-      }
-  
-      fetchData();
-    }, []);
-    
-    console.log("2nd log", product)
+    fetchData();
+  }, []);
 
   return (
-   <>
-   <h1>halo</h1>
-
-    <div>
-      <h1>List of Items</h1>
-      <ul>
+    <div className="product-page">
+      <h1>Our Products</h1>
+      <div className="product-grid">
         {product.map((item) => (
-          <li key={item.id}>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </li>
+          <div key={item.id} className="product-card">
+            <img src={item.thumbnail} alt={item.title} className="product-image"/>
+            <div className="product-info">
+              <h2>{item.title}</h2>
+              <p className="product-description">{item.description}</p>
+              <p className="product-price">${item.price}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
-   </>
-    
-  )
-}
+  );
+};
 
-
-export default ProductFetch
+export default ProductFetch;
