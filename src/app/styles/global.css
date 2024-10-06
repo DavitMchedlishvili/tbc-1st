@@ -23,8 +23,8 @@
     overflow-y: auto;
     width: 100%;
     padding: 20px 0px;
-    /* background-color: #e9ecef; */
-    background-color: green;
+    background-color: #e9ecef;
+  
   }
 
   Footer{
@@ -60,7 +60,6 @@ ul{
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    border: 2px red solid;
   }
 
 
