@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
+import NotFoundPage from "../../not-found";
 
 const ProductDetail = ({ params }) => {
   const [product, setProduct] = useState(null);
@@ -30,7 +31,7 @@ const ProductDetail = ({ params }) => {
   if (loading) return <div>Loading...</div>;
 
   if (!product) {
-    return notFound();
+    return <NotFoundPage />;
   }
 
   return (
