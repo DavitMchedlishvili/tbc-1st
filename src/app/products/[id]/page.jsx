@@ -28,14 +28,25 @@ const ProductDetail = ({ params }) => {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="loading-placeholder">
+        <div className="spinner"></div>
+
+        <div className="skeleton-grid">
+          {[...Array(8)].map((_, index) => (
+            <div key={index} className="skeleton-card"></div>
+          ))}
+        </div>
+      </div>
+    );
 
   if (!product) {
     return <NotFoundPage />;
   }
 
   return (
-    <div>
+    <div className="product-page container">
       <h1>{product.title}</h1>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
