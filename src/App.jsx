@@ -1,18 +1,9 @@
-
-import './App.css'
-import Layouts from './Layouts/Layouts'
-import Routers from './Routes/Routers'
-
-
+import Home from "./app/home/page";
 function App() {
  
   return (
     <>
-    <Layouts>
-    <Routers/>
-    </Layouts>
-
-    
+    <Home />
     </>
   )
 }

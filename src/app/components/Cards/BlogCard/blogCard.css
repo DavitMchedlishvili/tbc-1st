@@ -1,0 +1,37 @@
+    .blogCard-container{
+    
+        border: gray 2px solid;
+        padding: 10px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+
+    .blogCard-Img{
+        width: 300px;
+        height: 180px;
+    }
+
+
+    .blogCard-container h1{
+        min-height: 144px;
+    }
+
+
+    .blogBtn{
+        margin-bottom: 20px;
+        padding: 5px 10px;
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+    
+        border: none;
+        cursor: pointer;
+    }
+    
+    .blogBtn:hover{
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);;
+    }
