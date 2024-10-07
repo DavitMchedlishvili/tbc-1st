@@ -5,6 +5,7 @@ import NotFoundPage from "../../not-found";
 import "./index.css";
 import Like from "../../../../public/assets/like.png";
 import Dislike from "../../../../public/assets/dislike.png";
+import ReturnButton from "../../components/ReturnButton/ReturnButton";
 
 const PostsDetails = ({ params }) => {
   const [posts, setPosts] = useState(null);
@@ -58,6 +59,9 @@ const PostsDetails = ({ params }) => {
         ))}{" "}
       </p>
       <p className="single-PostViwes">views: {posts.views}</p>
+      <div>
+        <ReturnButton />
+      </div>
     </div>
   );
 };
