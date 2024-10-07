@@ -1,6 +1,5 @@
 // import React from "react";
 
-
 // async function fetchPosts(id) {
 //     const res = await fetch(`https://dummyjson.com/posts/${id}`)
 //     const post = await res.json()
@@ -20,11 +19,6 @@
 //     const {id} = params;
 //     const post = await fetchPosts(id);
 
-
-
-
-
-
 //     return (
 //         <div>
 //             <h1>{post.name}</h1>
@@ -33,20 +27,20 @@
 //               <span key={index}>
 //                 #{tag}
 //               </span>
-//               ))} </p>  
+//               ))} </p>
 //         </div>
 //     )
 // }
 
-
-
 import React from "react";
 
 async function fetchPosts(id = null) {
-  const url = id ? `https://dummyjson.com/posts/${id}` : `https://dummyjson.com/posts`;
+  const url = id
+    ? `https://dummyjson.com/posts/${id}`
+    : `https://dummyjson.com/posts`;
   const res = await fetch(url);
   const data = await res.json();
-  return id ? data : data.posts;  // Fetch single post if id is passed, otherwise fetch all posts
+  return id ? data : data.posts; // Fetch single post if id is passed, otherwise fetch all posts
 }
 
 export async function generateStaticParams() {
@@ -59,11 +53,11 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }) {
   const { id } = params;
-  const post = await fetchPosts(id);  // Fetch specific post by id
+  const post = await fetchPosts(id); // Fetch specific post by id
 
   return (
     <div>
-      <h1>{post.title}</h1>  {/* Use post.title instead of post.name */}
+      <h1>{post.title}</h1> {/* Use post.title instead of post.name */}
       <p>{post.body}</p>
       <p>
         Tags:{" "}
