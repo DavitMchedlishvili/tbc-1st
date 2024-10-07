@@ -32,10 +32,9 @@ const PostsFetch = () => {
       ) : (
         <div className="posts">
           {posts.map((post) => (
-            <div key={post.id} className="post">
               <Link className="postLink" href={`/posts/${post.id}`}>
+            <div key={post.id} className="post">
                 <h2 className="postTitle">{post.title}</h2>
-              </Link>
               <p className="postContent">{post.body}</p>
               <div className="reactions">
                 <div className="like">
@@ -55,6 +54,7 @@ const PostsFetch = () => {
               </p>
               <p className="postViwes">views: {post.views}</p>
             </div>
+                </Link>
           ))}
         </div>
       )}

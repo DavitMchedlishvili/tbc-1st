@@ -1,70 +1,65 @@
-// import React from "react";
+"use client";
+import { useEffect, useState } from "react";
+import { notFound } from "next/navigation";
+import NotFoundPage from "../../not-found";
+import "./index.css";
+import Like from "../../../../public/assets/like.png";
+import Dislike from "../../../../public/assets/dislike.png";
 
-// async function fetchPosts(id) {
-//     const res = await fetch(`https://dummyjson.com/posts/${id}`)
-//     const post = await res.json()
-//     return post
-// }
-
-// export async function generateStaticParams() {
-//     const res = await fetchPosts("https://dummyjson.com/posts");
-//     const posts = await res.json();
-
-//     return posts.map((post) => ({
-//         id: post.id.toString()
-//     }));
-// }
-
-// export default async function PostPage({params}){
-//     const {id} = params;
-//     const post = await fetchPosts(id);
-
-//     return (
-//         <div>
-//             <h1>{post.name}</h1>
-//             <p>{post.body}</p>
-//             <p>Tags: {post.tags.map((tag, index) => (
-//               <span key={index}>
-//                 #{tag}
-//               </span>
-//               ))} </p>
-//         </div>
-//     )
-// }
-
-import React from "react";
-
-async function fetchPosts(id = null) {
-  const url = id
-    ? `https://dummyjson.com/posts/${id}`
-    : `https://dummyjson.com/posts`;
-  const res = await fetch(url);
-  const data = await res.json();
-  return id ? data : data.posts; // Fetch single post if id is passed, otherwise fetch all posts
-}
-
-export async function generateStaticParams() {
-  const posts = await fetchPosts(); // Fetch all posts
-
-  return posts.map((post) => ({
-    id: post.id.toString(),
-  }));
-}
-
-export default async function PostPage({ params }) {
+const PostsDetails = ({ params }) => {
+  const [posts, setPosts] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { id } = params;
-  const post = await fetchPosts(id); // Fetch specific post by id
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await fetch(`https://dummyjson.com/posts/${id}`);
+        if (!res.ok) {
+          return notFound();
+        }
+        const data = await res.json();
+        setPosts(data);
+      } catch (error) {
+        console.error("Failed to fetch product:", error);
+        notFound();
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, [id]);
+
+  if (loading) return <div>Loading...</div>;
+
+  if (!posts) {
+    return <NotFoundPage />;
+  }
 
   return (
-    <div>
-      <h1>{post.title}</h1> {/* Use post.title instead of post.name */}
-      <p>{post.body}</p>
-      <p>
+    <div className="single-PostContainer container">
+      <h1 className="single-PostTitle">{posts.title}</h1>
+      <p className="single-PostBody">{posts.body}</p>
+      <div className="single-PostReactions">
+        <div className="single-PostLike">
+          <img src={Like.src} alt="like" />
+          <p>{posts.reactions.likes}</p>
+        </div>
+        <div className="single-PostDislike">
+          <img src={Dislike.src} alt="dislike" />
+          <p>{posts.reactions.dislikes}</p>
+        </div>
+      </div>
+      <p className="single-PostTags">
         Tags:{" "}
-        {post.tags.map((tag, index) => (
-          <span key={index}>#{tag} </span>
-        ))}
+        {posts.tags.map((tag, index) => (
+          <span key={index}>#{tag}</span>
+        ))}{" "}
       </p>
+      <p className="single-PostViwes">views: {posts.views}</p>
     </div>
   );
-}
+};
+
+export default PostsDetails;
