@@ -15,9 +15,12 @@ const PostsFetch = () => {
       const res = await fetch("https://dummyjson.com/posts");
       const data = await res.json();
 
-      setPosts(data.posts);
-      setLoading(false);
+      setTimeout(() => {
+        setPosts(data.posts);
+        setLoading(false); 
+      }, 2000);
     }
+
     fetchData();
   }, []);
 
