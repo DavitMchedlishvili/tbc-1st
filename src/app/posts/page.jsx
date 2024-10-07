@@ -15,9 +15,12 @@ const PostsFetch = () => {
       const res = await fetch("https://dummyjson.com/posts");
       const data = await res.json();
 
-      setPosts(data.posts);
-      setLoading(false);
+      setTimeout(() => {
+        setPosts(data.posts);
+        setLoading(false); 
+      }, 2000);
     }
+
     fetchData();
   }, []);
 
@@ -32,7 +35,7 @@ const PostsFetch = () => {
       ) : (
         <div className="posts">
           {posts.map((post) => (
-              <Link className="postLink" href={`/posts/${post.id}`}>
+              <Link key={post.id} className="postLink" href={`/posts/${post.id}`}>
             <div key={post.id} className="post">
                 <h2 className="postTitle">{post.title}</h2>
               <p className="postContent">{post.body}</p>
