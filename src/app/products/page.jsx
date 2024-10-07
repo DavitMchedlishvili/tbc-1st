@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import "./index.css";
 import Link from "next/link";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 const ProductFetch = () => {
   const [products, setProducts] = useState([]);
@@ -27,15 +28,7 @@ const ProductFetch = () => {
       <h1>Our Products</h1>
 
       {loading ? (
-        <div className="loading-placeholder">
-          <div className="spinner"></div>
-
-          <div className="skeleton-grid">
-            {[...Array(8)].map((_, index) => (
-              <div key={index} className="skeleton-card"></div>
-            ))}
-          </div>
-        </div>
+        <LoadingSpinner />
       ) : (
         <div className="product-grid">
           {products.map((item) => (

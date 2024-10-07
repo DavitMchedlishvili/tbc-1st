@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import NotFoundPage from "../../not-found";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import "../index.css";
+import ReturnButton from "../../components/ReturnButton/ReturnButton";
 
 const ProductDetail = ({ params }) => {
   const [product, setProduct] = useState(null);
@@ -28,18 +31,27 @@ const ProductDetail = ({ params }) => {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <LoadingSpinner />;
 
   if (!product) {
     return <NotFoundPage />;
   }
 
   return (
-    <div>
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      <img src={product.images[0]} alt={product.title} />{" "}
+    <div className="product-card detailed-product_page">
+      <div className="product-info detailed-product_info">
+        <h1>{product.title}</h1>
+        <p className="product-description">{product.description}</p>
+        <p className="product-price">Price: ${product.price}</p>
+      </div>
+      <img
+        src={product.images[0]}
+        alt={product.title}
+        className="product-image detailed-product_image"
+      />
+      <div className="return-back">
+        <ReturnButton />
+      </div>
     </div>
   );
 };
