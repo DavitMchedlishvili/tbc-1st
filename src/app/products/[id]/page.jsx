@@ -10,6 +10,7 @@ const ProductDetail = ({ params }) => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = params;
+  console.log(params)
 
   useEffect(() => {
     async function fetchProduct() {

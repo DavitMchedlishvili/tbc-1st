@@ -16,6 +16,7 @@ header{
 }
 
 
+
 .navigation{
     display: flex;
     justify-content: space-between;
@@ -34,10 +35,15 @@ header{
     color: white;
 }
 
-.header-container a{
+
+
+.nav-link{
     cursor: pointer;
+    font-size: 20px;  
   }
 
-.header-container a:hover{
+
+.nav-link:hover{
     color: #D87D4A;
+    
   }
