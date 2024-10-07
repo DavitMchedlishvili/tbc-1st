@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import NotFoundPage from "../../not-found";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const ProductDetail = ({ params }) => {
   const [product, setProduct] = useState(null);
@@ -28,18 +29,7 @@ const ProductDetail = ({ params }) => {
     fetchProduct();
   }, [id]);
 
-  if (loading)
-    return (
-      <div className="loading-placeholder">
-        <div className="spinner"></div>
-
-        <div className="skeleton-grid">
-          {[...Array(8)].map((_, index) => (
-            <div key={index} className="skeleton-card"></div>
-          ))}
-        </div>
-      </div>
-    );
+  if (loading) return <LoadingSpinner />;
 
   if (!product) {
     return <NotFoundPage />;
