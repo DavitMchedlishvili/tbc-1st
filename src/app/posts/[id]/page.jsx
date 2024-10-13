@@ -1,69 +1,60 @@
-"use client";
-import { useEffect, useState } from "react";
-import { notFound } from "next/navigation";
 import NotFoundPage from "../../not-found";
 import "./index.css";
 import Like from "../../../../public/assets/like.png";
 import Dislike from "../../../../public/assets/dislike.png";
 import ReturnButton from "../../components/ReturnButton/ReturnButton";
 
-const PostsDetails = ({ params }) => {
-  const [posts, setPosts] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const { id } = params;
+const getPosts = async (id) => {
+  let res = await fetch(`https://dummyjson.com/posts/${id}`);
+  if (!res.ok) {
+    return null;
+  }
+  let post = await res.json();
+  return post || null;
+};
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const res = await fetch(`https://dummyjson.com/posts/${id}`);
-        if (!res.ok) {
-          return notFound();
-        }
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Failed to fetch product:", error);
-        notFound();
-      } finally {
-        setLoading(false);
-      }
-    }
+export async function generateStaticParams() {
+  let postsData = await fetch("https://dummyjson.com/posts").then((res) =>
+    res.json()
+  );
+  let posts = postsData.posts;
 
-    fetchPosts();
-  }, [id]);
+  return posts.map((post) => ({
+    params: { id: post.id.toString() },
+  }));
+}
 
-  if (loading) return <div>Loading...</div>;
+export default async function PostsDetails({ params }) {
+  let post = await getPosts(params.id);
 
-  if (!posts) {
+  if (!post) {
     return <NotFoundPage />;
   }
 
   return (
     <div className="single-PostContainer container">
-      <h1 className="single-PostTitle">{posts.title}</h1>
-      <p className="single-PostBody">{posts.body}</p>
+      <h1 className="single-PostTitle">{post.title}</h1>
+      <p className="single-PostBody">{post.body}</p>
       <div className="single-PostReactions">
         <div className="single-PostLike">
           <img src={Like.src} alt="like" />
-          <p>{posts.reactions.likes}</p>
+          <p>{post.reactions.likes}</p>
         </div>
         <div className="single-PostDislike">
           <img src={Dislike.src} alt="dislike" />
-          <p>{posts.reactions.dislikes}</p>
+          <p>{post.reactions.dislikes}</p>
         </div>
       </div>
       <p className="single-PostTags">
         Tags:{" "}
-        {posts.tags.map((tag, index) => (
+        {post.tags.map((tag, index) => (
           <span key={index}>#{tag}</span>
         ))}{" "}
       </p>
-      <p className="single-PostViwes">views: {posts.views}</p>
+      <p className="single-PostViews">views: {post.views}</p>
       <div>
         <ReturnButton />
       </div>
     </div>
   );
-};
-
-export default PostsDetails;
+}

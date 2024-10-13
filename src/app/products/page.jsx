@@ -35,7 +35,7 @@ const ProductFetch = () => {
             <div key={item.id} className="product-card">
               <Link href={`/products/${item.id}`}>
                 <img
-                  src={item.thumbnail}
+                  src={item.images[0]}
                   alt={item.title}
                   className="product-image"
                 />
