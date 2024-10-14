@@ -1,0 +1,21 @@
+.searchBar-container{
+ 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.searchBar-icon{
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.searchBar-input{
+    all: unset;
+    padding: 10px;
+    margin: 15px 0px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgb(224, 224, 224);
+}

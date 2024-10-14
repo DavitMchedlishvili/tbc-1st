@@ -1,35 +1,42 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import SearchBar from "../components/SearchBar/SearchBar";
+import NotFoundPage from "../not-found";
 import "./index.css";
 import Link from "next/link";
-import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
+// import Button from "../components/button/Button";
 
-const ProductFetch = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+ async function ProductFetch ({searchParams}){
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("https://dummyjson.com/products");
-      const data = await res.json();
 
-      setTimeout(() => {
-        setProducts(data.products);
-        setLoading(false);
-      }, 2000);
-    }
+ 
 
-    fetchData();
-  }, []);
+
+
+
+
+
+const searchTerm = searchParams.search || "";
+
+try {
+  let url = "https://dummyjson.com/products";
+  if(searchTerm){
+      url = `https://dummyjson.com/products/search?q=${searchTerm}`;
+  }
+  
+  const response = await fetch(url);
+  const data = await response.json();
+  const products = data.products || [];
+
+
+
+
+
+
+
 
   return (
     <div className="product-page container">
       <h1>Our Products</h1>
-
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
+      <SearchBar searchType={"products"}/>
         <div className="product-grid">
           {products.map((item) => (
             <div key={item.id} className="product-card">
@@ -48,9 +55,13 @@ const ProductFetch = () => {
             </div>
           ))}
         </div>
-      )}
+  
     </div>
   );
+} catch (error) {
+  console.log("Error fetching data: ", error);
+  return <NotFoundPage />;
+}
 };
 
 export default ProductFetch;

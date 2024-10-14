@@ -1,7 +1,7 @@
 import "../index.css";
 import ReturnButton from "../../components/ReturnButton/ReturnButton";
 import { Suspense } from "react";
-import { notFound } from "next/navigation";
+
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import NotFoundPage from "../../not-found";
 
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   let products = productsData.products;
 
   return products.map((product) => ({
-    params: { id: product.id.toString() },
+    params: { id: product.id}
   }));
 }
 

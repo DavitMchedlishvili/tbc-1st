@@ -20,7 +20,7 @@ export async function generateStaticParams() {
   let posts = postsData.posts;
 
   return posts.map((post) => ({
-    params: { id: post.id.toString() },
+    params: { id: post.id }
   }));
 }
 
