@@ -1,9 +1,8 @@
 import SearchBar from "../components/SearchBar/SearchBar";
-// import Sort from "../components/Sort/Sort";
+import SortComponent from "../components/Sort/SortComponent";
 import NotFoundPage from "../not-found";
 import "./index.css";
 import Link from "next/link";
-// import Button from "../components/button/Button";
 
 
 
@@ -12,24 +11,35 @@ import Link from "next/link";
  async function ProductFetch ({searchParams}){
 
   const searchTerm = searchParams.search || "";
-  // const sortOption = searchParams.sortOption || "";
-  // const sortOrder = searchParams.sortOrder || "";
+  console.log(searchTerm)
+  const sortOption = searchParams.option || "";
+  console.log(sortOption)
+  const sortOrder = searchParams.order || "";
+  console.log(sortOrder)
 
-  // const sortOptions = [
-  //   {
-  //     label: 'Price: Low to Hight',
-  //     value: 'price-low-to-high',
-  //     option: 'price',
-  //     order: 'asc'
-  //   },
-  //   {  label: 'Price: High to Low', 
-  //     value: 'price-high-to-low',
-  //     option: "price",
-  //     order: "desc"
-      
-  //      },
-  // ]
-
+  const sortOptions = [
+    {   label: 'Price: Low to High',
+        value: 'price-low-to-high',
+        option: "price",
+        order: "asc"
+        },
+    {   label: 'Price: High to Low', 
+        value: 'price-high-to-low',
+        option: "price",
+        order: "desc"
+        
+         },
+    {   label: 'Name: A-Z',  
+        value: 'name-ascending',
+        option: "title",
+        order: "asc"
+        },
+    {   label: 'Name: Z-A',  
+        value: 'name-descending',
+        option: "title",
+        order: "desc"
+        },
+  ];
 
 
 
@@ -38,9 +48,9 @@ try {
   if(searchTerm){
       url = `https://dummyjson.com/products/search?q=${searchTerm}`;
   }
-//   if(sortOption && sortOrder){
-//     url = `https://dummyjson.com/products?sortBy=${sortOption}&order=${sortOrder}`
-// }
+  if(sortOption && sortOrder){
+    url = `https://dummyjson.com/products?sortBy=${sortOption}&order=${sortOrder}`
+}
   
   const response = await fetch(url);
   const data = await response.json();
@@ -58,6 +68,7 @@ try {
       <h1>Our Products</h1>
       
       <SearchBar searchType={"products"}/>
+      <SortComponent sortOptions={sortOptions}  />
         <div className="product-grid">
           {products.map((item) => (
             <div key={item.id} className="product-card">
