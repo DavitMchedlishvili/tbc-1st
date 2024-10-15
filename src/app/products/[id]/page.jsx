@@ -34,7 +34,7 @@ export default async function ProductDetail({ params }) {
   }
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    // <Suspense fallback={<LoadingSpinner />}>
       <div className="product-card detailed-product_page">
         {" "}
         <div className="product-info detailed-product_info">
@@ -51,6 +51,6 @@ export default async function ProductDetail({ params }) {
           <ReturnButton />
         </div>
       </div>
-    </Suspense>
+    // </Suspense>
   );
 }

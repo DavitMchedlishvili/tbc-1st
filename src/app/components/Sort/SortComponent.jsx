@@ -1,48 +1,40 @@
-'use client'
 
+"use client";
+ 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react"
-import "./sortComponent.css"
-
-
-
-
-
-
-
-
-const SortComponent = ({sortOptions}) => {
-  
-  
+import "./sortComponent.css";
+ 
+const SortComponent = () => {
+  const sortOptions = [
+    {label: "Default", value:""},
+    { label: "Price: Low to High", value: "price-asc" },
+    { label: "Price: High to Low", value: "price-desc" },
+    { label: "Name: A-Z", value: "title-asc" },
+    { label: "Name: Z-A", value: "title-desc" },
+  ];
+ 
   const router = useRouter();
-  const [sortValue, setSortValue] = useState("name-asc")
-  console.log(sortValue)
-  const value = sortOptions.value
-   
 
-
-
-
-
-
-  const handlerSort = (value) =>{
-    router.push(`/products/?sortBy=${value}`)
-    console.log(value)
-    setSortValue((c) => c=value) 
-  }
-
-
-
+ 
+  const handlerSort = (selectedSortValue) => {
+    router.push(`/products/?sortBy=${selectedSortValue}`);
+  };
+ 
   return (
     <>
-   <select value={sortValue} className="select" name="sort" onChange={(e)=>{handlerSort(e.target.value)}}>
-    <option value={'price-asc'}>{"Price: Low to High"}</option>
-    <option value={'price-desc'}>{'Price: High to Low'}</option>
-    <option value={sortOptions.value}>{sortOptions.label}</option>
-    <option value={sortOptions.value}>{sortOptions.label}</option>
-   </select>
+      <select
+        className="select"
+        name="sort"
+        onChange={(e) => handlerSort(e.target.value)}
+      >
+        {sortOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </>
-  )
-}
-
-export default SortComponent
+  );
+};
+ 
+export default SortComponent;
