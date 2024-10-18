@@ -58,3 +58,7 @@ const ProductDetail = ({ params }) => {
 };
 
 export default ProductDetail;
+
+
+
+// nikastvis
