@@ -12,9 +12,13 @@ const LoginPage = () => {
             username: e.target.username.value,
             password: e.target.password.value
         }
-        console.log(formData);
+        
         const result = await authenticate(formData)
-        console.log(result)
+        if(result.success){
+            window.location.href="/profile"
+        }else{
+            alert(result.message)
+        }
     }
 
 

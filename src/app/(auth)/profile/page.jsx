@@ -1,50 +1,56 @@
 import "./index.css"
-import Me from "../../../../public/assets/Me.jpg"
+import { cookies } from "next/headers"
+import { refreshAccessToken } from "../../../lib/action"
 
-const Profile = () => {
+
+
+
+
+
+export async function ProfilePage (){
+
+    const cookieStore = cookies();
+    let token = cookieStore.get("accessToken");
+
+    if(!token){
+        const refreshResponse = refreshAccessToken();
+        if(!refreshResponse.success){
+            return <h1>
+                Please Log In 
+            </h1>
+        }
+        token = cookieStore.get("accessToken");
+
+    }
+
+
+    const response = await fetch('https://dummyjson.com/auth/me', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token.value}`,
+      }, 
+      credentials: 'include' 
+    })
+    const data = await response.json()
+    if(!response.ok){
+        return <h1>
+            Failed to load profile
+        </h1>
+    }
+
+
   return (
    
-        <div className="profileContainer">
-            <div className="profileCard">
-                <img 
-                src={Me.src} 
-                alt="Profile" 
-                className="profilePicture"
-                />
-                <div className="profileName">
-                    <div className="firstName">
-                        <label>Firstname: </label>
-                        <input type="text" value={"Daviti"} readOnly />
-                    </div>
-                    <div className="lastName">
-                        <label>Lastname: </label>
-                        <input type="text" value={"Mchedlishvili"} readOnly />    
-                    </div>
-                    </div>
-                <p className="profileTitle">Frontend WEB Developer</p>
-                <p className="profileBio">
-                Passionate web developer with experience in building dynamic and responsive websites. Skilled in HTML, CSS, JavaScript, and React.
-                </p>
-                <div className="profileDetails">
-                    <div className="lastName">
-                        <label><strong>Email: </strong></label>
-                        <input type="email" value={"YourEmail@tbcacademy.edu.ge"} readOnly />    
-                    </div>
-                    <div className="Phone: ">
-                        <label><strong>Phone: </strong></label>
-                        <input type="email" value={"+995 555 12 13 14"} readOnly />    
-                    </div>
-                    <div className="Location:">
-                        <label><strong>Location: </strong></label>
-                        <input type="email" value={"Georgia, Tbilisi"} readOnly />    
-                    </div>
-                <p><strong>Phone:</strong> +995 555 12 13 14</p>
-                <p><strong>Location:</strong> Georgia, Tbilisi</p>
-                </div>
-            </div>
+        <div className="profileContainer container">
+            <h1>
+                {data.firstName}
+            </h1>
+            <h1>{data.lastName}</h1>
+            <p>{data.email}</p>
+            <img src={data.image} alt="image" />
         </div>
     
   )
 }
 
-export default Profile
+export default ProfilePage

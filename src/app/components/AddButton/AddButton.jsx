@@ -134,7 +134,7 @@ const AddButton = ({ item, addProduct }) => {
               <input
                 type="file"
                 id="product-image"
-                accept="images/"
+                accept="images"
                 onChange={handleImageChange}
               />
               <button className="submit-button" type="submit">

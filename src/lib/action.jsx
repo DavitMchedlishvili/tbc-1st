@@ -67,3 +67,24 @@ export async function refreshAccessToken() {
     return { success: false, message: error.message || "Something went wrong while refreshing Token" };
   }
 }
+
+
+
+export async function LogOut() {
+    try{
+        const cookieStore = cookies();
+    cookieStore.delete("accessToken");
+    cookieStore.delete("refreshToken");
+    const result = {
+        success:true,
+        message: "Log out successfull"
+    }
+    return result
+    }catch{
+        console.error(error, "Something went wrong")
+        return {
+            success: false,
+            message: "Log out failed"
+        }
+    }
+}
