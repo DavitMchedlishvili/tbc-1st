@@ -1,9 +1,9 @@
-import Home from "./app/home/page";
+import Home from "../src/app/(auth)/home/page"
 function App() {
  
   return (
     <>
-    <Home />
+    <Home/>
     </>
   )
 }

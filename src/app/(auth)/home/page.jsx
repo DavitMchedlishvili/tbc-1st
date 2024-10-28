@@ -1,6 +1,6 @@
 import "./index.css"
-import ItemCard from "../components/Cards/ItemCard/ItemCard"
-import data from "../../data"
+import ItemCard from "../../components/Cards/ItemCard/ItemCard"
+import data from "../../../data"
 
 
 

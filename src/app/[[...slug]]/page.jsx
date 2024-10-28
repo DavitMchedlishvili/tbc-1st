@@ -10,6 +10,7 @@ export function generateStaticParams() {
     { slug: ["profile"] },
     { slug: ["products"] },
     { slug: ["posts"] },
+    { slug: ["login"] }
   ];
 }
 
