@@ -1,5 +1,5 @@
 import "./index.css"
-import Me from "../../../public/assets/Me.jpg"
+import Me from "../../../../public/assets/Me.jpg"
 
 const Profile = () => {
   return (
