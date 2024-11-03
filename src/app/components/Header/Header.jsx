@@ -1,6 +1,6 @@
 import "./header.css"
 import Link from 'next/link'
-import LogOutButton from "../LogOutButton/LogOut"
+
 
 
 const Header = () => {
@@ -15,8 +15,9 @@ const Header = () => {
             <Link className='nav-link' href="/posts">Posts</Link>
             <Link className='nav-link' href="/about">About</Link>
             <Link className='nav-link' href="/contact">Contact Us</Link>
-            <Link className="nav-link" href="/login">Log in</Link>
-            <LogOutButton/>
+            <Link className="nav-link" href="/api/auth/login">Login</Link>
+            <Link className="nav-link" href="/api/auth/logout">Logout</Link>
+            
           </div>
         </nav>
         <Link className='profile-btn' href="/profile">Profile</Link>

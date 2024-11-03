@@ -1,6 +1,8 @@
 import "./styles/global.css"
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer"
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+
 
 
 export const metadata = {
@@ -12,14 +14,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
+      <UserProvider>
       <body>
         <div className="body-container">
         <Header /> 
-        <div id="root">{children}</div>
+        <div className="content">{children}</div>
         <Footer />
         </div>
         
       </body>
+      </UserProvider>
+      
     </html>
   );
 }
