@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
       <UserProvider>
       <body>
         <div className="body-container">
-        <Header /> 
+        {/* <Header />  */}
         <div className="content">{children}</div>
-        <Footer />
+        {/* <Footer /> */}
         </div>
         
       </body>
