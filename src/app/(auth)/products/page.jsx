@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -8,6 +8,8 @@ import "./index.css";
 import Link from "next/link";
 import ProductActions from "../../components/EditDeleteButtons/ProductActions";
 import AddButton from "../../components/AddButton/AddButton";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 function ProductFetch({ searchParams }) {
   const searchTerm = searchParams.search || "";
@@ -15,7 +17,7 @@ function ProductFetch({ searchParams }) {
   const [sortOption, sortOrder] = sortOptions.split("-");
   const [products, setProducts] = useState([]);
   const [hasError, setHasError] = useState(false);
-  
+
   let url = "https://dummyjson.com/products";
   if (searchTerm) {
     url = `https://dummyjson.com/products/search?q=${searchTerm}`;
@@ -24,8 +26,7 @@ function ProductFetch({ searchParams }) {
     url = `https://dummyjson.com/products?sortBy=${sortOption}&order=${sortOrder}`;
   }
 
- 
-useEffect(() => {
+  useEffect(() => {
     async function fetchProducts() {
       try {
         const response = await fetch(url);
@@ -34,18 +35,19 @@ useEffect(() => {
         setHasError(false);
       } catch (error) {
         console.log("Error fetching data: ", error);
-        setHasError(true)
+        setHasError(true);
       }
     }
     fetchProducts();
   }, [url]);
-
 
   const addProduct = (item) => {
     const newId = Date.now();
     const itemWithId = { ...item, id: newId };
     setProducts((prevProducts) => [...prevProducts, itemWithId]);
   };
+
+
 
   const setProductCallBack = (updatedProduct) => {
     setProducts((prevProducts) =>
@@ -54,6 +56,9 @@ useEffect(() => {
       )
     );
   };
+
+
+  
 
   const deleteProductCallback = (productId) => {
     setProducts((prevProducts) =>
@@ -66,39 +71,45 @@ useEffect(() => {
   }
 
   return (
-    <div className="product-page container">
-      <h1>Our Products</h1>
-      <SearchBar searchType={"products"} />
-      <div className="sort-add">
-
-      <AddButton item="Products" addProduct={addProduct} />
-      <SortComponent />
-      </div>
-      <div className="product-grid">
-        {products.map((item) => (
-          <div key={item.id} className="product-card">
-            <Link href={`/products/${item.id}`}>
-              <img
-                src={item.images[0]}
-                alt={item.title}
-                className="product-image"
-              />
-              <div className="product-info">
-                <h2>{item.title}</h2>
-                <p className="product-description">{item.description}</p>
-                <p className="product-price">${item.price}</p>
-              </div>
-            </Link>
-            <ProductActions
-              product={item}
-              type="products"
-              setProductCallBack={setProductCallBack}
-              deleteProductCallback={deleteProductCallback}
-              onEditingChange={() => {}}
-            />
+    <div className="body-container">
+      <Header />
+      <div className="content">
+        <div className="product-page container">
+          <h1>Our Products</h1>
+          <SearchBar searchType={"products"} />
+          <div className="sort-add">
+            <AddButton item="Products" addProduct={addProduct} />
+            <SortComponent />
           </div>
-        ))}
+          <div className="product-grid">
+            {products.map((item) => (
+              <div key={item.id} className="product-card">
+                <Link href={`/products/${item.id}`}>
+                  <img
+                    src={item.images[0]}
+                    alt={item.title}
+                    className="product-image"
+                  />
+                  <div className="product-info">
+                    <h2>{item.title}</h2>
+                    <p className="product-description">{item.description}</p>
+                    <p className="product-price">${item.price}</p>
+                  </div>
+                </Link>
+                <ProductActions
+                  product={item}
+                  type="products"
+                  setProductCallBack={setProductCallBack}
+                  deleteProductCallback={deleteProductCallback}
+                  onEditingChange={() => {}}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

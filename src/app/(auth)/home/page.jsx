@@ -4,6 +4,7 @@ import data from "../../../data"
 
 
 
+
 const Home = () => {
   return (
     
@@ -18,7 +19,6 @@ const Home = () => {
           btnColor = {item.btnColor}
           />
         ))}
-        {/* <p>salami</p> */}
       </div>
       
 

@@ -9,6 +9,8 @@ import Link from "next/link";
 import Like from "../../../../public/assets/like.png";
 import Dislike from "../../../../public/assets/dislike.png";
 import AddButton from "../../components/AddButton/AddButton";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 
 function PostsFetch({ searchParams }) {
   const searchTerm = searchParams.search || "";
@@ -60,7 +62,11 @@ function PostsFetch({ searchParams }) {
   }
 
   return (
-    <div className="postContainer">
+    <>
+    <div className="body-container">
+    <Header/>
+    <div className="content">
+<div className="postContainer">
       <h1 className="postTitle">Posts</h1>
       <SearchBar searchType={"posts"} />
       <AddButton item="Posts" addProduct={addProduct} />
@@ -100,6 +106,13 @@ function PostsFetch({ searchParams }) {
       
       </div>
     </div>
+    </div>
+    
+    <Footer/>
+    </div>
+    
+    </>
+    
   );
 }
 

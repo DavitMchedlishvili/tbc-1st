@@ -31,7 +31,7 @@ const ProductActions = ({
         if (response.status === 404) {
           let updatedProduct = product;
           updatedProduct.title = newTitle;
-    
+          console.log("product", updatedProduct)
           setProductCallBack(updatedProduct);
         }
         setEditing(false);
