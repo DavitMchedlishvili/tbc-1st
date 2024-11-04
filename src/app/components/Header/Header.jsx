@@ -9,7 +9,7 @@ import Link from 'next/link'
 const Header = () => {
   return (
   
-    <header className="bg-red-600">
+    <header className="w-full text-white bg-[#191919] ">
       <div className="header-container container">
         <Link className='nav-link' href="/">Home</Link>
         <nav >
