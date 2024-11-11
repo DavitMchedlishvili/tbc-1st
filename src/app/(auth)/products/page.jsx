@@ -71,9 +71,8 @@ function ProductFetch({ searchParams }) {
   }
 
   return (
-    <div className="body-container">
-      <Header />
-      <div className="content">
+ 
+      
         <div className="product-page container">
           <h1>Our Products</h1>
           <SearchBar searchType={"products"} />
@@ -107,10 +106,9 @@ function ProductFetch({ searchParams }) {
             ))}
           </div>
         </div>
-      </div>
+    
 
-      <Footer />
-    </div>
+     
   );
 }
 

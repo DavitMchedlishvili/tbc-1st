@@ -63,9 +63,7 @@ function PostsFetch({ searchParams }) {
 
   return (
     <>
-    <div className="body-container">
-    <Header/>
-    <div className="content">
+    
 <div className="postContainer">
       <h1 className="postTitle">Posts</h1>
       <SearchBar searchType={"posts"} />
@@ -106,10 +104,7 @@ function PostsFetch({ searchParams }) {
       
       </div>
     </div>
-    </div>
-    
-    <Footer/>
-    </div>
+  
     
     </>
     
