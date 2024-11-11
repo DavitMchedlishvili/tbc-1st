@@ -1,5 +1,5 @@
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import "../global.css";
+import "./styles/global.css";
 import { ThemeProvider } from "next-themes";
 import { Inter } from 'next/font/google';
 
