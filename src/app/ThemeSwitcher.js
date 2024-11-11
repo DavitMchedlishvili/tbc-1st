@@ -5,12 +5,12 @@ import { DarkButton } from "./components/ThemeButtons/DarkButton";
 import { LightButton } from "./components/ThemeButtons/LightButton";
 
 const themes = [
-  { value: "light", label: "ღია", icon: <LightButton className="w-5  h-5" /> },
-  { value: "dark", label: "მუქი", icon: <DarkButton className="w-5 h-5" /> },
-  { value: "system", label: "სისტემური", icon: <LightButton className="w-5 h-5" /> }, // Replace with appropriate icon
+  { value: "light", label: "Light", icon: <LightButton className="w-5  h-5" /> },
+  { value: "dark", label: "Dark", icon: <DarkButton className="w-5 h-5" /> },
+  { value: "system", label: "System", icon: <button className="w-5 h-5" /> },
 ];
 
-const ThemeSwitcher = () => {
+const  ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
@@ -58,11 +58,11 @@ useEffect(() => {
         </div>
       </button>
       {dropdownOpen && (
-        <div className="absolute z-10 mt-1 w-full rounded-md bg-white shadow-lg dark:bg-gray-700">
+        <div className="absolute z-10 mt-1 w-full rounded-md bg-slate-600 shadow-lg dark:bg-gray-700">
           {themes.map((themeOption) => (
             <button
               key={themeOption.value}
-              className="flex items-center w-full p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+              className="flex items-center rounded-md w-full p-2 hover:bg-gray-400 dark:hover:bg-gray-600"
               onClick={() => handleThemeChange(themeOption.value)}
             >
               {themeOption.icon}

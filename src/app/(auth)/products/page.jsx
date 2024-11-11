@@ -8,8 +8,7 @@ import "./index.css";
 import Link from "next/link";
 import ProductActions from "../../components/EditDeleteButtons/ProductActions";
 import AddButton from "../../components/AddButton/AddButton";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+
 
 function ProductFetch({ searchParams }) {
   const searchTerm = searchParams.search || "";
