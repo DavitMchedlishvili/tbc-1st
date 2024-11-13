@@ -1,8 +1,9 @@
 
-import ThemeSwitcher from "../../ThemeSwitcher"
-import ThemeProvider from "../../utils/ThemeProvider"
+// import ThemeSwitcher from "../../ThemeSwitcher"
+// import ThemeProvider from "../../utils/ThemeProvider"
+import { Link } from "../../../../i18n/routing"
 import "./header.css"
-import Link from 'next/link'
+// import Link from 'next/link'
 
 
 
@@ -25,7 +26,7 @@ const Header = () => {
           </div>
         </nav>
         <Link className='profile-btn' href="/profile">Profile</Link>
-        <ThemeSwitcher/>
+        {/* <ThemeSwitcher/> */}
       </div>
       
     </header>

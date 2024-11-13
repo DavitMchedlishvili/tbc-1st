@@ -1,5 +1,5 @@
 import "./index.css";
-import BlogCard from "../../components/Cards/BlogCard/BlogCard";
+import BlogCard from "../components/Cards/BlogCard/BlogCard";
 import data from "../../../data";
 
 const Blog = () => {

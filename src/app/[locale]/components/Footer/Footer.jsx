@@ -1,8 +1,8 @@
 import Link from "next/link";
 import "./footer.css"
-import Fb from "../../../../public/assets/facebook.png";
-import Inst from "../../../../public/assets/instagram.png";
-import Tvt from "../../../../public/assets/twitter.png";
+import Fb from "../../../../../public/assets/facebook.png";
+import Inst from "../../../../../public/assets/instagram.png";
+import Tvt from "../../../../../public/assets/twitter.png";
 
 
 const Footer = () => {
