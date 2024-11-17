@@ -1,16 +1,16 @@
 "use client";
 
+import "./index.css";
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SortComponent from "../../components/Sort/SortComponent";
-import NotFoundPage from "../../not-found";
-import "./index.css";
-import Link from "next/link";
+import NotFoundPage from "../../../not-found";
 import ProductActions from "../../components/EditDeleteButtons/ProductActions";
 import AddButton from "../../components/AddButton/AddButton";
+import { Link } from "../../../../i18n/routing";
 
 
-function ProductFetch({ searchParams }) {
+export function Products({ searchParams }) {
   const searchTerm = searchParams.search || "";
   const sortOptions = searchParams.sortBy || "";
   const [sortOption, sortOrder] = sortOptions.split("-");
@@ -111,4 +111,19 @@ function ProductFetch({ searchParams }) {
   );
 }
 
-export default ProductFetch;
+export default Products;
+
+
+
+// import React from 'react'
+// import ProductFetch from './ProductFetch'
+
+// export const Products = () => {
+//   return (
+//     <ProductFetch/>
+//   )
+// }
+
+
+// export default Products
+

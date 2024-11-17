@@ -3,5 +3,19 @@
       "title": "Hello world!",
       "about": "Go to the about page"
 
+    },
+
+    "Header":{
+      "Home": "Home",
+      "Products": "Products",
+      "Blog": "Blog",
+      "About": "About",
+      "Contact Us": "Contact Us",
+      "Posts": "Posts",
+      "Profile": "Profile",
+      "Login": "Login",
+      "Logout": "Logout"
     }
+
+    
   }

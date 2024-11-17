@@ -5,6 +5,8 @@ import { routing } from '../../i18n/routing';
 import Header  from "./components/Header/Header"
 import Footer  from "./components/Footer/Footer"
 import "../styles/global.css";
+// import { UserProvider } from '@auth0/nextjs-auth0/client';
+// import { ThemeProvider } from 'next-themes';
 
 
 
@@ -19,18 +21,19 @@ export default async function LocaleLayout({ children, params: { locale } }) {
   const messages = await getMessages(locale) || {};
 
   return (
-    <html  lang={locale}>
-      <body>
-        
+ <>
+ 
         <NextIntlClientProvider messages={messages}>
-          <div className="bg-red-700 body-container">
+      <div  className="body-container">
           <Header/>
           <div className="content">{children}</div>
           <Footer/>
-          </div>
+       </div>
         </NextIntlClientProvider>
-      </body>
       
-    </html>
+ </>
+      
+      
+  
   );
 }

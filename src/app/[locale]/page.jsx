@@ -1,13 +1,14 @@
-import { useTranslations } from 'next-intl';
-import { Link } from '../../i18n/routing.js';
+import "../styles/global.css"
+import Home from "../../app/[locale]/(auth)/home/page"
 
-export default function HomePage() {
-  const t = useTranslations('HomePage');
+
+function HomePage() {
+ 
   return (
     <>
-      <h1>{t('title')}</h1>
-      <Link href="/about">{t('about')}</Link>
-      
+    <Home/>
     </>
-  );
+  )
 }
+
+export default HomePage

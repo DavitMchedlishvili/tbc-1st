@@ -1,9 +1,27 @@
-// import { UserProvider } from "@auth0/nextjs-auth0/client";
-// import "./styles/global.css";
-// import { ThemeProvider } from "next-themes";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import "./styles/global.css";
+import { ThemeProvider } from "next-themes";
+export default function RootLayout({ children }) {
+ 
+ 
+ 
+ 
+  return (
+    <html suppressHydrationWarning>
+      <body>
+        <UserProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <main>{children}</main>
+          </ThemeProvider>
+        </UserProvider>
+      </body>
+    </html>
+  );
+}
+
 // import { Inter } from 'next/font/google';
-// import Header from "./components/Header/Header";
-// import Footer from "./components/Footer/Footer";
+// import Header from "../app/[locale]/components/Header/Header";
+// import Footer from "../app/[locale]/components/Footer/Footer";
 
 // export const metadata = {
 //   title: "Group 5",
@@ -12,27 +30,21 @@
 
 // const inter = Inter({ subsets: ['latin'] });
 
-
 // export default function RootLayout({ children }) {
 //   return (
-//     <html  >
+//     <html suppressHydrationWarning  >
 //       <UserProvider>
-//       <body className="bg-green-600">
 //       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-//           <div className="body-container">
+//       <body>
+
 //           {/* <Header/> */}
 //             <div className="content">{children}</div>
 //           {/* <Footer/> */}
-//           </div>
-//       </ThemeProvider>
+
 //         </body>
+//       </ThemeProvider>
 //       </UserProvider>
 
-  
-        
 //     </html>
 //   );
 // }
-export default function RootLayout({ children }) {
-    return children
-}

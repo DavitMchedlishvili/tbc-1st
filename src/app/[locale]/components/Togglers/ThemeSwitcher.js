@@ -1,8 +1,8 @@
 "use client";
 import { useTheme } from "next-themes";
 import { useEffect, useState, useRef } from "react"; 
-import { DarkButton } from "./components/ThemeButtons/DarkButton";
-import { LightButton } from "./components/ThemeButtons/LightButton";
+import { DarkButton } from "../../../../app/[locale]/components/ThemeButtons/DarkButton";
+import { LightButton } from "../../../../app/[locale]/components/ThemeButtons/LightButton";
 
 const themes = [
   { value: "light", label: "Light", icon: <LightButton className="w-5  h-5" /> },

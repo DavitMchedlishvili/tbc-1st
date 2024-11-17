@@ -9,9 +9,11 @@ footer{
     padding-top: 1.5rem;
     display: flex;
     justify-content: space-around;
+    
 }
 
 .footerContext h3{
+    
     text-transform: uppercase;
     font: 2rem;
     margin-bottom: 0.5rem;

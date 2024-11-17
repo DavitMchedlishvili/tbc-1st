@@ -1,15 +1,14 @@
-import "./styles/global.css"
-import Home from "./(auth)/home/page"
-import Footer from "./components/Footer/Footer"
-import Header from "./components/Header/Header"
+// import "./styles/global.css"
+// import Home from "./(auth)/home/page"
 
-function HomePage() {
+
+// function HomePage() {
  
-  return (
-    <>
-    <Home/>
-    </>
-  )
-}
+//   return (
+//     <>
+//     <Home/>
+//     </>
+//   )
+// }
 
-export default HomePage
+// export default HomePage

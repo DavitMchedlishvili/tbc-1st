@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 import "./searchBar.css"
 import { useRouter } from "next/navigation"
-import { useDebounce } from "../../hooks/useDebounce"
-import Search from "../../../../public/assets/search-symbol.png"
+import { useDebounce } from "../../../hooks/useDebounce"
+import Search from "../../../../../public/assets/search-symbol.png"
 
 
 

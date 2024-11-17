@@ -2,15 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import NotFoundPage from "../../not-found";
+import NotFoundPage from "../../../not-found";
 import ProductActions from "../../components/EditDeleteButtons/ProductActions";
 import "./index.css";
-import Link from "next/link";
-import Like from "../../../../public/assets/like.png";
-import Dislike from "../../../../public/assets/dislike.png";
+import Like from "../../../../../public/assets/like.png";
+import Dislike from "../../../../../public/assets/dislike.png";
 import AddButton from "../../components/AddButton/AddButton";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import { Link } from "../../../../i18n/routing";
+
 
 function PostsFetch({ searchParams }) {
   const searchTerm = searchParams.search || "";

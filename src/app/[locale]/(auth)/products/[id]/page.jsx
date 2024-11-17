@@ -1,9 +1,8 @@
 import "../index.css";
 import ReturnButton from "../../../components/ReturnButton/ReturnButton";
 import { Suspense } from "react";
-
 import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
-import NotFoundPage from "../../../not-found";
+import NotFoundPage from "../../../../not-found";
 
 const getProduct = async (id) => {
   let res = await fetch(`https://dummyjson.com/products/${id}`);

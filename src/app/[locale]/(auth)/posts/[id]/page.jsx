@@ -1,7 +1,7 @@
-import NotFoundPage from "../../../not-found";
+import NotFoundPage from "../../../../not-found";
 import "./index.css";
-import Like from "../../../../../public/assets/like.png"
-import Dislike from "../../../../../public/assets/dislike.png";
+import Like from "../../../../../../public/assets/like.png"
+import Dislike from "../../../../../../public/assets/dislike.png";
 import ReturnButton from "../../../components/ReturnButton/ReturnButton";
 
 const getPosts = async (id) => {
