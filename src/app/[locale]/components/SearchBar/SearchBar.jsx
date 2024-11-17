@@ -5,6 +5,7 @@ import "./searchBar.css"
 import { useRouter } from "next/navigation"
 import { useDebounce } from "../../../hooks/useDebounce"
 import Search from "../../../../../public/assets/search-symbol.png"
+import { useLocale } from "next-intl"
 
 
 
@@ -12,12 +13,15 @@ export default function SearchBar({searchType}){
     const [searchTerm, setSearchTerm] = useState("")
     const debouncedValue = useDebounce(searchTerm, 300);
     const router = useRouter();
-    
+    const locale = useLocale();
+
+
+
     useEffect(() =>{
         if(debouncedValue){
-            router.push(`/${searchType}/?search=${debouncedValue}`)
+            router.push(`/${locale}/${searchType}/?search=${debouncedValue}`)
         }else{
-            router.push(`/${searchType}`)
+            router.push(`/${locale}/${searchType}`)
         }
     },[debouncedValue, router])
 

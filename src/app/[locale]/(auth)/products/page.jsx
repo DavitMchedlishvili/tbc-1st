@@ -10,7 +10,7 @@ import AddButton from "../../components/AddButton/AddButton";
 import { Link } from "../../../../i18n/routing";
 
 
-export function Products({ searchParams }) {
+const Products = ({ searchParams }) => {
   const searchTerm = searchParams.search || "";
   const sortOptions = searchParams.sortBy || "";
   const [sortOption, sortOrder] = sortOptions.split("-");

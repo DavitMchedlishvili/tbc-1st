@@ -3,6 +3,7 @@
  
 import { useRouter } from "next/navigation";
 import "./sortComponent.css";
+import { useLocale } from "next-intl";
  
 const SortComponent = () => {
   const sortOptions = [
@@ -14,10 +15,10 @@ const SortComponent = () => {
   ];
  
   const router = useRouter();
-
+  const locale = useLocale();
  
   const handlerSort = (selectedSortValue) => {
-    router.push(`/products/?sortBy=${selectedSortValue}`);
+    router.push(`/${locale}/products/?sortBy=${selectedSortValue}`);
   };
  
   return (
