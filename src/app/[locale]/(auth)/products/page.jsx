@@ -104,7 +104,9 @@ const Products = ({ searchParams }) => {
               </div>
             ))}
           </div>
+      
         </div>
+        
     
 
      
