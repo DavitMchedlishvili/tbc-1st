@@ -1,5 +1,5 @@
 import "../styles/global.css"
-import Home from "../../app/[locale]/(auth)/home/page"
+import Home from "./(auth)/home/page"
 
 
 function HomePage() {

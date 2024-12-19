@@ -1,5 +1,8 @@
-import React from "react";
-export const LightButton = (props) => (
+import React, { SVGProps } from "react";
+
+interface LightButtonProps extends SVGProps<SVGSVGElement> {}
+
+export const LightButton: React.FC<LightButtonProps> = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -15,3 +18,4 @@ export const LightButton = (props) => (
     </g>
   </svg>
 );
+

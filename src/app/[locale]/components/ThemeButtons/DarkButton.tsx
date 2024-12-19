@@ -1,5 +1,8 @@
-import React from "react";
-export const DarkButton = (props) => (
+import React, { SVGProps } from "react";
+
+interface DarkButtonProps extends SVGProps<SVGSVGElement> {}
+
+export const DarkButton: React.FC<DarkButtonProps> = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -15,3 +18,4 @@ export const DarkButton = (props) => (
     />
   </svg>
 );
+

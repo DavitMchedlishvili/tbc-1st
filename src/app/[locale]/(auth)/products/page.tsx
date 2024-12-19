@@ -9,12 +9,29 @@ import ProductActions from "../../components/EditDeleteButtons/ProductActions";
 import AddButton from "../../components/AddButton/AddButton";
 import { Link } from "../../../../i18n/routing";
 
+// Type Definitions
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  images: string[];
+}
 
-const Products = ({ searchParams }) => {
+interface SearchParams {
+  search?: string;
+  sortBy?: string; // Format: "field-order"
+}
+
+interface ProductsProps {
+  searchParams: SearchParams;
+}
+
+const Products: React.FC<ProductsProps> = ({ searchParams }) => {
   const searchTerm = searchParams.search || "";
   const sortOptions = searchParams.sortBy || "";
   const [sortOption, sortOrder] = sortOptions.split("-");
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [hasError, setHasError] = useState(false);
 
   let url = "https://dummyjson.com/products";
@@ -40,15 +57,13 @@ const Products = ({ searchParams }) => {
     fetchProducts();
   }, [url]);
 
-  const addProduct = (item) => {
+  const addProduct = (item: Omit<Product, "id">) => {
     const newId = Date.now();
     const itemWithId = { ...item, id: newId };
     setProducts((prevProducts) => [...prevProducts, itemWithId]);
   };
 
-
-
-  const setProductCallBack = (updatedProduct) => {
+  const setProductCallBack = (updatedProduct: Product) => {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
         product.id === updatedProduct.id ? updatedProduct : product
@@ -56,10 +71,7 @@ const Products = ({ searchParams }) => {
     );
   };
 
-
-  
-
-  const deleteProductCallback = (productId) => {
+  const deleteProductCallback = (productId: number) => {
     setProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== productId)
     );
@@ -70,62 +82,44 @@ const Products = ({ searchParams }) => {
   }
 
   return (
- 
-      
-        <div className="product-page container">
-          <h1>Our Products</h1>
-          <SearchBar searchType={"products"} />
-          <div className="sort-add">
-            <AddButton item="Products" addProduct={addProduct} />
-            <SortComponent />
-          </div>
-          <div className="product-grid">
-            {products.map((item) => (
-              <div key={item.id} className="product-card">
-                <Link href={`/products/${item.id}`}>
-                  <img
-                    src={item.images[0]}
-                    alt={item.title}
-                    className="product-image"
-                  />
-                  <div className="product-info">
-                    <h2>{item.title}</h2>
-                    <p className="product-description">{item.description}</p>
-                    <p className="product-price">${item.price}</p>
-                  </div>
-                </Link>
-                <ProductActions
-                  product={item}
-                  type="products"
-                  setProductCallBack={setProductCallBack}
-                  deleteProductCallback={deleteProductCallback}
-                  onEditingChange={() => {}}
-                />
+    <div className="product-page container">
+      <h1>Our Products</h1>
+      <SearchBar searchType={"products"} />
+      <div className="sort-add">
+        <AddButton item="Products" addProduct={addProduct} />
+        <SortComponent />
+      </div>
+      <div className="product-grid">
+        {products.map((item) => (
+          <div key={item.id} className="product-card">
+            <Link href={`/products/${item.id}`}>
+              <img
+                src={item.images[0]}
+                alt={item.title}
+                className="product-image"
+              />
+              <div className="product-info">
+                <h2>{item.title}</h2>
+                <p className="product-description">{item.description}</p>
+                <p className="product-price">${item.price}</p>
               </div>
-            ))}
+            </Link>
+            <ProductActions
+              product={item}
+              type="products"
+              setProductCallBack={setProductCallBack}
+              deleteProductCallback={deleteProductCallback}
+              onEditingChange={() => {}}
+            />
           </div>
-      
-        </div>
-        
-    
-
-     
+        ))}
+      </div>
+    </div>
   );
-}
+};
 
 export default Products;
 
 
 
-// import React from 'react'
-// import ProductFetch from './ProductFetch'
-
-// export const Products = () => {
-//   return (
-//     <ProductFetch/>
-//   )
-// }
-
-
-// export default Products
 

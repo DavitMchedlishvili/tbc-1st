@@ -1,5 +1,5 @@
 import "./header.css"
-import ThemeSwitcher from "../../components/Togglers/ThemeSwitcher"
+import ThemeSwitcher from "../Togglers/ThemeSwitcher"
 import { Link } from "../../../../i18n/routing"
 import LanguageSwitcher from "../Togglers/LanguageSwitcher"
 import { useTranslations } from "next-intl"

@@ -1,19 +1,19 @@
 'use client';
 
 import { useRouter, usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 
 export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const initialLocale = pathname.split('/')[1] || 'en';
-  const [locale, setLocale] = useState(initialLocale);
+  const [locale, setLocale] = useState<string>(initialLocale);
 
   useEffect(() => {
     setLocale(initialLocale);
   }, [pathname]);
 
-  const handleLocaleChange = (e) => {
+  const handleLocaleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newLocale = e.target.value;
     setLocale(newLocale);
     router.push(`/${newLocale}${pathname.slice(3)}`);

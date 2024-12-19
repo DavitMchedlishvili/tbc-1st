@@ -3,15 +3,31 @@
 import React, { useEffect, useState } from "react";
 import "./productActions.css";
 
-const ProductActions = ({
+interface Product {
+  id: number;
+  title: string;
+  [key: string]: any; // For flexibility in case of other properties in the product object
+}
+
+
+
+interface ProductActionsProps {
+  product: Product;
+  type: string;
+  setProductCallBack: (product: Product) => void;
+  deleteProductCallback: (id: number) => void;
+  onEditingChange: (editing: boolean) => void;
+}
+
+const ProductActions: React.FC<ProductActionsProps> = ({
   product,
   type,
   setProductCallBack,
   deleteProductCallback,
   onEditingChange,
 }) => {
-  const [editing, setEditing] = useState(false);
-  const [newTitle, setNewTitle] = useState(product.title);
+  const [editing, setEditing] = useState<boolean>(false);
+  const [newTitle, setNewTitle] = useState<string>(product.title);
 
   const handleEdit = async () => {
     if (newTitle) {
@@ -25,13 +41,13 @@ const ProductActions = ({
           }
         );
         if (response.status === 200) {
-          var data = await response.json();
+          const data = await response.json();
           setProductCallBack(data);
         }
         if (response.status === 404) {
           let updatedProduct = product;
           updatedProduct.title = newTitle;
-          console.log("product", updatedProduct)
+          console.log("product", updatedProduct);
           setProductCallBack(updatedProduct);
         }
         setEditing(false);
@@ -85,3 +101,4 @@ const ProductActions = ({
 };
 
 export default ProductActions;
+

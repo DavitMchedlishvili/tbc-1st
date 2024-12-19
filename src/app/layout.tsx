@@ -1,11 +1,12 @@
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "./styles/global.css";
 import { ThemeProvider } from "next-themes";
-export default function RootLayout({ children }) {
- 
- 
- 
- 
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html suppressHydrationWarning>
       <body>
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
 
 // import { Inter } from 'next/font/google';
 // import Header from "../app/[locale]/components/Header/Header";

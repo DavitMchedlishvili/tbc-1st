@@ -1,20 +1,44 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import "./AddButton.css";
 
-const AddButton = ({ item, addProduct }) => {
-  const [isProductModalOpen, setProductModalOpen] = useState(false);
-  const [productName, setProductName] = useState("");
-  const [productDescription, setProductDescription] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productImage, setProductImage] = useState(null);
+// Define the types for the props
+interface AddButtonProps {
+  item: "Posts" | "Products";
+  addProduct: (newItem: Product | Post) => void;
+}
 
-  const [isPostModalOpen, setPostModalOpen] = useState(false);
-  const [postTitle, setPostTitle] = useState("");
-  const [postDescription, setPostDescription] = useState("");
-  const [postTags, setPostTags] = useState([]);
-  const [tagInput, setTagInput] = useState("");
+// Define the structure of the product object
+interface Product {
+  title: string;
+  description: string;
+  price: string;
+  images: string | null;
+}
+
+// Define the structure of the post object
+interface Post {
+  title: string;
+  body: string;
+  tags: string[];
+  reactions: {
+    likes: number;
+    dislikes: number;
+  };
+}
+
+const AddButton: React.FC<AddButtonProps> = ({ item, addProduct }) => {
+  const [isProductModalOpen, setProductModalOpen] = useState<boolean>(false);
+  const [productName, setProductName] = useState<string>("");
+  const [productDescription, setProductDescription] = useState<string>("");
+  const [productPrice, setProductPrice] = useState<string>("");
+  const [productImage, setProductImage] = useState<string | null>(null);
+
+  const [isPostModalOpen, setPostModalOpen] = useState<boolean>(false);
+  const [postTitle, setPostTitle] = useState<string>("");
+  const [postDescription, setPostDescription] = useState<string>("");
+  const [postTags, setPostTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState<string>("");
 
   const handleClick = () => {
     if (item === "Posts") {
@@ -26,9 +50,9 @@ const AddButton = ({ item, addProduct }) => {
     }
   };
 
-  const handleProductSubmit = (e) => {
+  const handleProductSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const newProduct = {
+    const newProduct: Product = {
       title: productName,
       description: productDescription,
       price: productPrice,
@@ -39,14 +63,14 @@ const AddButton = ({ item, addProduct }) => {
     setProductName("");
     setProductDescription("");
     setProductPrice("");
-    setProductImage("");
+    setProductImage(null);
 
     setProductModalOpen(false);
   };
 
-  const handlePostSubmit = (e) => {
+  const handlePostSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const newPost = {
+    const newPost: Post = {
       title: postTitle,
       body: postDescription,
       tags: postTags,
@@ -57,35 +81,41 @@ const AddButton = ({ item, addProduct }) => {
     };
     addProduct(newPost);
 
-    setPostTitle(" ");
-    setPostDescription(" ");
+    setPostTitle("");
+    setPostDescription("");
     setPostTags([]);
-    setTagInput(" ");
+    setTagInput("");
     setPostModalOpen(false);
   };
 
-  const handleProductNameChange = (e) => setProductName(e.target.value);
-  const handleProductDescriptionChange = (e) =>
+  const handleProductNameChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setProductName(e.target.value);
+
+  const handleProductDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
     setProductDescription(e.target.value);
-  const handleProductPriceChange = (e) => setProductPrice(e.target.value);
 
-  const handlePostTitleChange = (e) => setPostTitle(e.target.value);
-  const handlePostDescriptionChange = (e) => setPostDescription(e.target.value);
+  const handleProductPriceChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setProductPrice(e.target.value);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handlePostTitleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setPostTitle(e.target.value);
+
+  const handlePostDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) =>
+    setPostDescription(e.target.value);
+
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setProductImage(imageUrl);
-      console.log(imageUrl)
+      console.log(imageUrl);
     }
   };
 
-  const handleTagInputChange = (e) => {
+  const handleTagInputChange = (e: ChangeEvent<HTMLInputElement>) =>
     setTagInput(e.target.value);
-  };
 
-  const handleAddTag = (e) => {
+  const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && tagInput.trim() !== "") {
       e.preventDefault();
       setPostTags([...postTags, tagInput.trim()]);
@@ -93,7 +123,7 @@ const AddButton = ({ item, addProduct }) => {
     }
   };
 
-  const removeTag = (indexToRemove) => {
+  const removeTag = (indexToRemove: number) => {
     setPostTags(postTags.filter((_, index) => index !== indexToRemove));
   };
 
@@ -134,7 +164,7 @@ const AddButton = ({ item, addProduct }) => {
               <input
                 type="file"
                 id="product-image"
-                accept="images"
+                accept="images/*"
                 onChange={handleImageChange}
               />
               <button className="submit-button" type="submit">

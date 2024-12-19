@@ -7,7 +7,8 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "noImplicitAny": true,
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
@@ -27,7 +28,7 @@
     "./dist/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/app/[locale]/components/AddButton/AddButton.tsx", "src/app/[locale]/(auth)/rame/page.tsx", "src/app/[locale]/(auth)/posts/page.tsx", "src/app/[locale]/components/LogOutButton/LogOut.jsx", "src/app/api/auth/[auth0]/route.js", "tailwind.config.js", "postcss.config.js"  ],
   "exclude": [
     "node_modules"
   ]
