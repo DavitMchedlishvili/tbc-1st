@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import React from "react";
-import { supabase } from "../../utils/supabase/supabase";
+import { supabase } from "../../../utils/supabase/supabase";
 
 
 export default function SignUp() {

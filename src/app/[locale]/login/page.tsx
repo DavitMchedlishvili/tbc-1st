@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useLocale } from "next-intl";
 // import PasswordInput from "@/src/components/Inputs/PasswordInput";
-import { supabase } from "../../utils/supabase/supabase";
+import { supabase } from "../../../utils/supabase/supabase";
 import { Link } from "../../../i18n/routing";
 
 export default function Login() {
