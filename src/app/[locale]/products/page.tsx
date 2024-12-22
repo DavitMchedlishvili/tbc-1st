@@ -2,12 +2,12 @@
 
 import "./index.css";
 import React, { useEffect, useState } from "react";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import SortComponent from "../../components/Sort/SortComponent";
-import NotFoundPage from "../../../not-found";
-import ProductActions from "../../components/EditDeleteButtons/ProductActions";
-import AddButton from "../../components/AddButton/AddButton";
-import { Link } from "../../../../i18n/routing";
+import SearchBar from "../components/SearchBar/SearchBar";
+import SortComponent from "../components/Sort/SortComponent";
+import NotFoundPage from "../../not-found";
+import ProductActions from "../components/EditDeleteButtons/ProductActions";
+import AddButton from "../components/AddButton/AddButton";
+import { Link } from "../../../i18n/routing";
 
 // Type Definitions
 interface Product {

@@ -21,15 +21,11 @@ export default async function LocaleLayout({
   const { locale } = params;
 
 
-  if (!locale || !routing.locales.includes(locale as "en" | "ka")) {
-    notFound();
-    return null; 
-  }
 
   const messages = await getMessages(locale);
 
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={messages} locale={locale}>
       <div className="body-container">
         <Header />
         <div className="content">{children}</div>

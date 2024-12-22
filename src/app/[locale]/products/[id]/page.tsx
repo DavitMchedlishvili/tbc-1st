@@ -1,8 +1,8 @@
 import "../index.css";
-import ReturnButton from "../../../components/ReturnButton/ReturnButton";
+import ReturnButton from "../../components/ReturnButton/ReturnButton";
 import { Suspense } from "react";
-import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
-import NotFoundPage from "../../../../not-found";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import NotFoundPage from "../../../not-found";
 
 // Type Definitions
 interface Product {

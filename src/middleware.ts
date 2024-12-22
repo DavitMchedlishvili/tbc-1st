@@ -1,27 +1,52 @@
-// // Importing createMiddleware from 'next-intl/middleware'
-// import middleware from 'next-intl/middleware';
-// // Importing routing configuration from './i18n/routing'
-// import { routing } from './i18n/routing';
+import { NextResponse, NextRequest } from "next/server";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
 
-// // Creating middleware using the default export of the 'next-intl' middleware
-// const createMiddleware= middleware.default;
+const nextIntlMiddleware = createMiddleware(routing);
 
-// // Exporting the middleware with the routing configuration
-// export default createMiddleware(routing);
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
 
-// // Configuring the middleware to match only internationalized pathnames
-// export const config = {
-//   matcher: ['/', '/(ka|en)/:path*']
-// };
+  nextIntlMiddleware(req);
 
+  const supabase = createMiddlewareClient({ req, res });
+  const {
+    data: { session },
+    error,
+  } = await supabase.auth.getSession();
 
+  const isLoginPage = req.nextUrl.pathname.includes("/login");
+  const isRestrictedPage = [
+    "/contact",
+    "/profile",
+    "/blog",
+    "/about",
+    "/products",
+    "/posts",
+  ].some((path) => req.nextUrl.pathname.includes(path));
 
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
- 
-export default createMiddleware(routing);
- 
+  if (!session && !isLoginPage && isRestrictedPage) {
+    const locale = req.nextUrl.pathname.startsWith("/ka") ? "ka" : "en";
+    const loginUrl = new URL(`/${locale}/login`, req.url);
+    return NextResponse.redirect(loginUrl); // Redirect to login
+  }
+
+  if (
+    !req.nextUrl.pathname.startsWith("/en") &&
+    !req.nextUrl.pathname.startsWith("/ka")
+  ) {
+    const defaultLocale = "en";
+    const redirectUrl = new URL(
+      `/${defaultLocale}${req.nextUrl.pathname}`,
+      req.url
+    );
+    return NextResponse.redirect(redirectUrl); 
+  }
+
+  return res;
+}
+
 export const config = {
-
-  matcher: ['/', '/(ka|en)/:path*']
+  matcher: ["/", "/(ka|en)/:path*"],
 };
