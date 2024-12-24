@@ -25,7 +25,7 @@ export default function ElementsForm(): JSX.Element {
 
   return (
     <Elements stripe={getStripe()} options={{ clientSecret }}>
-      <CheckoutForm clientSecret={clientSecret} />
+      <CheckoutForm clientSecret={clientSecret} uiMode={"hosted"} locale={"en"}/>
     </Elements>
   );
 }

@@ -27,8 +27,10 @@ export default function Login() {
     if (!response.ok) {
       const result = await response.json();
       setErrorMessage(result.error);
+      console.log(locale);
     } else {
       window.location.href = `/${locale}`; 
+      
     }
   };
 
@@ -88,3 +90,5 @@ export default function Login() {
 
   );
 }
+
+
