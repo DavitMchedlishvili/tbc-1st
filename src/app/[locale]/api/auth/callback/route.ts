@@ -1,8 +1,7 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-// import { defineRouting } from "next-intl/routing";
-// import { createNavigation } from "next-intl/navigation";
+
 
 
 export async function GET(req: NextRequest) {

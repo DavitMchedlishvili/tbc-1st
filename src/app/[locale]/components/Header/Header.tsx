@@ -18,10 +18,12 @@ const Header = () => {
         <nav >
           <div className='navigation'>
             <Link className='nav-link' href="/products">{t('Products')}</Link>
+            <Link className='nav-link' href="/myproducts">My Products</Link>
             <Link className='nav-link' href="/blog">{t('Blog')}</Link>
             <Link className='nav-link' href="/posts">{t('Posts')}</Link>
             <Link className='nav-link' href="/about">{t('About')}</Link>
             <Link className='nav-link' href="/contact">{t('Contact Us')}</Link>
+            <Link className="nav-link" href="/create-product">Create Product</Link>
             {/* <a className="nav-link" href="/api/auth/login">{t('Login')}</a>
             <a className="nav-link" href="/api/auth/logout">{t('Logout')}</a> */}
             

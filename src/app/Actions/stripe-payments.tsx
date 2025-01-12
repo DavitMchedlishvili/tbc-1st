@@ -3,7 +3,7 @@
 import type { Stripe } from "stripe";
 import { headers } from "next/headers";
 import { stripe } from "../../lib/stripe";
-
+import { createClient } from "../../utils/supabase/server";
 
 export async function createCheckoutSession(
   data: FormData
@@ -11,20 +11,26 @@ export async function createCheckoutSession(
   const ui_mode = data.get(
     "uiMode"
   ) as Stripe.Checkout.SessionCreateParams.UiMode;
-
+  const priceId = data.get("priceId") as string;
+  const product_id = data.get("product_id") as string;
   const origin: string = (await headers()).get("origin") as string;
-
   const locale = data.get("locale") || "en";
 
-  const priceId = data.get("priceId") as string;
+  if (!priceId || !product_id) {
+    throw new Error("Price ID and Product ID are required.");
+  }
 
-  if (!priceId) {
-    throw new Error("Price ID is required.");
+  const supabase = await createClient();
+  const { data: authData, error: authError } = await supabase.auth.getUser();
+  const user_id = authData?.user?.id;
+
+  if (authError || !user_id) {
+    throw new Error("User authentication failed.");
   }
 
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
-      mode: "subscription",
+      mode: "payment",
       payment_method_types: ["card"],
       line_items: [
         {
@@ -32,9 +38,12 @@ export async function createCheckoutSession(
           quantity: 1,
         },
       ],
+      metadata: {
+        product_id,
+        user_id,
+      },
       ...(ui_mode === "hosted" && {
-        success_url: `${origin}/${locale}/pricing/result?session_id={CHECKOUT_SESSION_ID}`,
-     
+        success_url: `${origin}/${locale}/pricing/product-result?session_id={CHECKOUT_SESSION_ID}`,
       }),
       ...(ui_mode === "embedded" && {
         return_url: `${origin}/${locale}/subscribe/embedded?session_id={CHECKOUT_SESSION_ID}`,
