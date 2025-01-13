@@ -13,13 +13,13 @@ export async function middleware(req: NextRequest) {
 
   // Initialize Supabase client
   const supabase = createClient();
-
+  
   // Get session from Supabase
   const { data, error } = await (await supabase).auth.getSession();
-
+  
   // Check if data is present and session is not null
   const session = data?.session;
-
+  
   const isLoginPage = req.nextUrl.pathname.includes("/login");
   const isRestrictedPage = [
     "/contact",
@@ -27,9 +27,10 @@ export async function middleware(req: NextRequest) {
     "/blog",
     "/about",
     "/products",
-    "create-product",
-    "posts",
+    "/create-product",
+    "/posts",
     "/pricing",
+    "myproducts",
   ].some((path) => req.nextUrl.pathname.includes(path));
 
   // If no session and the user is trying to access a restricted page, redirect to login
@@ -58,3 +59,9 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: ["/", "/(ka|en)/:path*"], // Match all paths for both English and Georgian locales
 };
+
+
+
+
+
+

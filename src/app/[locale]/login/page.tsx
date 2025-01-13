@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useLocale } from "next-intl";
-// import PasswordInput from "@/src/components/Inputs/PasswordInput";
+
 import { supabase } from "../../../utils/supabase/supabase";
 import { Link } from "../../../i18n/routing";
 
@@ -34,11 +34,12 @@ export default function Login() {
     }
   };
 
+
   const handleGithubLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: `${window.location.origin}/${"ka"}/api/auth/callback`, 
+        redirectTo: `${window.location.origin}/${locale}/api/auth/callback`,
       },
     });
 
