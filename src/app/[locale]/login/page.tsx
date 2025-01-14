@@ -84,7 +84,7 @@ export default function Login() {
   </button>
   <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
     Don't have an account?{" "}
-    <Link href={`/signup`} className="text-blue-500 dark:text-blue-400 hover:underline">
+    <Link data-cy="register-link" href={`/signup`} className="text-blue-500 dark:text-blue-400 hover:underline">
       Register here
     </Link>
   </p>
