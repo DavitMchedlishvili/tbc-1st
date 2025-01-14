@@ -24,7 +24,7 @@ const Header = () => {
             <Link className='nav-link' href="/posts">{t('Posts')}</Link>
             <Link className='nav-link' href="/about">{t('About')}</Link>
             <Link className='nav-link' href="/contact">{t('Contact Us')}</Link>
-            <Link className="nav-link" href="/create-product">Create Product</Link>
+            <Link data-cy="create-product-link" className="nav-link" href="/create-product">Create Product</Link>
             {/* <a className="nav-link" href="/api/auth/login">{t('Login')}</a>
             <a className="nav-link" href="/api/auth/logout">{t('Logout')}</a> */}
             
