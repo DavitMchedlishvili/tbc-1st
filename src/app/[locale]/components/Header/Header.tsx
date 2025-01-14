@@ -3,6 +3,7 @@ import ThemeSwitcher from "../Togglers/ThemeSwitcher"
 import { Link } from "../../../../i18n/routing"
 import LanguageSwitcher from "../Togglers/LanguageSwitcher"
 import { useTranslations } from "next-intl"
+import { LoginOutBtn } from "../LogInOutBTN/LoginOutBtn"
 
 
 
@@ -29,6 +30,7 @@ const Header = () => {
             
           </div>
         </nav>
+        <LoginOutBtn/>
         <Link className='profile-btn' href="/profile">{t('Profile')}</Link>
         <div className="flex gap-3">
         <LanguageSwitcher/>

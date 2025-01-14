@@ -3,6 +3,8 @@
 import { useState } from "react";
 import React from "react";
 import { supabase } from "../../../utils/supabase/supabase";
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 
 export default function SignUp() {
@@ -14,6 +16,8 @@ export default function SignUp() {
     password: '',
   });
 
+  const router = useRouter();
+  const locale = useLocale();
   const signUp = async () => {
     try {
       const { data: authData, error } = await supabase
@@ -25,6 +29,7 @@ export default function SignUp() {
 
       if (authData) {
         console.log(authData);
+        router.push(`/${locale}/login`)
       }
 
       if (error) {

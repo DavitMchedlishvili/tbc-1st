@@ -29,7 +29,7 @@ export default function Login() {
       setErrorMessage(result.error);
       console.log(locale);
     } else {
-      window.location.href = `/${locale}`; 
+      window.location.href = `/${locale}/myproducts`; 
       
     }
   };
@@ -52,21 +52,24 @@ export default function Login() {
     <div className="m-10 max-w-sm mx-auto p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md space-y-4">
   <form onSubmit={handleSubmit} className="space-y-4">
     <input
+      data-cy="email-input"
       type="email"
       name="email"
       placeholder="Email"
       className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200"
     />
     <input
+      data-cy="password-input"
       type="password"
       name="password"
       placeholder="Password"
       className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200"
     />
     {errorMessage && (
-      <p className="text-red-500 dark:text-red-400 text-sm">{errorMessage}</p>
+      <p className="text-red-500 dark:text-red-400 text-sm" data-cy="error-login-message" >{errorMessage}</p>
     )}
     <button
+      data-cy="Login-button"
       type="submit"
       className="w-full p-2 bg-blue-500 dark:bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-600 dark:hover:bg-blue-700"
     >
