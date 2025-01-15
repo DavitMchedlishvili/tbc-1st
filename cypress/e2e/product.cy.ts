@@ -31,6 +31,26 @@ describe('products creating and buying it', () => {
       cy.get('[data-cy="product-description-input"]').type("test description")
 
       cy.get('[data-cy="create-product-button"]').click();
+
+      
+
+    });
+
+    it('deletes created product', () => {
+      cy.visit('/')
+
+      cy.get('[data-cy="login-logout"]').click();
+
+      cy.get('[data-cy="email-input"]').type("davit.mchedlishvili.2396@gmail.com");
+  
+      cy.get('[data-cy="password-input"]').type("Mchedlishvili23")
+  
+      cy.get('[data-cy="Login-button"]').click()
+
+      cy.get('[data-cy="myproduct-link"]').click()
+
+      cy.get('button').contains("Delete").click()
+
     });
   });
 

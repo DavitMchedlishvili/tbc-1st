@@ -2,16 +2,17 @@
 import React, { useState } from "react";
 import { useRouter } from "../../../../i18n/routing";
 import BuyNow from "../CreateProductForm/BuyNow";
-// import { Product } from "@/src/types/products";
+import DeleteProduct from "../CreateProductForm/DeleteProduct";
+
+
+
 interface ProductCardProps {
   product: any;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
   const router = useRouter();
-  const [feedbackMessage, setFeedbackMessage] = useState<string>("");
-  const [isError, setIsError] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
+
 
   const handleViewProduct = () => {
     router.push(`/myproducts/${product.id}`);
@@ -54,6 +55,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           View Product
         </button>
       </div>
+      <DeleteProduct data-cy="delete-button" id={product.id}/>
     </div>
   );
 }

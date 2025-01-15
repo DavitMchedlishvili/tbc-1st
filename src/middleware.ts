@@ -3,23 +3,22 @@ import { createClient } from "./utils/supabase/server"; // Your custom createCli
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 
-
 const nextIntlMiddleware = createMiddleware(routing);
 
 export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
+  // First, handle internationalization (next-intl)
+ nextIntlMiddleware(req)
 
-  nextIntlMiddleware(req);
-
-  // Initialize Supabase client
+  // Initialize Supabase client for session check
   const supabase = createClient();
-  
-  // Get session from Supabase
   const { data, error } = await (await supabase).auth.getSession();
-  
-  // Check if data is present and session is not null
+
+  // Log the request path and session data for debugging
+  console.log("Request Pathname:", req.nextUrl.pathname);
+  console.log("Session Data:", data); // Make sure data and session are correct
+
   const session = data?.session;
-  
+  console.log(data, session)
   const isLoginPage = req.nextUrl.pathname.includes("/login");
   const isRestrictedPage = [
     "/contact",
@@ -30,17 +29,23 @@ export async function middleware(req: NextRequest) {
     "/create-product",
     "/posts",
     "/pricing",
-    "myproducts",
+    "/myproducts",
   ].some((path) => req.nextUrl.pathname.includes(path));
 
-  // If no session and the user is trying to access a restricted page, redirect to login
-  if (!session && !isLoginPage && isRestrictedPage) {
+  // Add more logs to see if this condition is met
+  console.log("Session:", session);
+  console.log("Is Restricted Page:", isRestrictedPage);
+  console.log("Is Login Page:", isLoginPage);
+
+  // If there's no session and trying to access a restricted page
+  if (!session && isRestrictedPage && !isLoginPage) {
     const locale = req.nextUrl.pathname.startsWith("/ka") ? "ka" : "en";
     const loginUrl = new URL(`/${locale}/login`, req.url);
-    return NextResponse.redirect(loginUrl); // Redirect to login page
+    console.log("Redirecting to login:", loginUrl.toString()); // Log the redirection URL
+    return NextResponse.redirect(loginUrl);
   }
 
-  // Redirect to default locale if not already in /en or /ka
+  // Redirect to default locale if not in /en or /ka
   if (
     !req.nextUrl.pathname.startsWith("/en") &&
     !req.nextUrl.pathname.startsWith("/ka")
@@ -50,18 +55,19 @@ export async function middleware(req: NextRequest) {
       `/${defaultLocale}${req.nextUrl.pathname}`,
       req.url
     );
+    console.log("Redirecting to default locale:", redirectUrl.toString()); // Log redirection to default locale
     return NextResponse.redirect(redirectUrl); // Redirect to default locale
   }
 
-  return res; // Continue to the requested page
+  const intlResponse = await nextIntlMiddleware(req);
+  if (intlResponse) {
+  return intlResponse; // If next-intl processes the request, return its response
 }
+
+  return NextResponse.next();
+}
+
 
 export const config = {
   matcher: ["/", "/(ka|en)/:path*"], // Match all paths for both English and Georgian locales
 };
-
-
-
-
-
-
