@@ -8,10 +8,10 @@ export const routing = defineRouting({
   defaultLocale: "en",
 });
 
-export const { Link, redirect, usePathname, useRouter } = createNavigation(routing);
+export const {Link, redirect, usePathname, useRouter } = createNavigation(routing);
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
+  // const cookieStore = cookies();
   const formData = await req.formData();
   const email = String(formData.get("email"));
   const password = String(formData.get("password"));
