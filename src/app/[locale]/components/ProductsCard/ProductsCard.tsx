@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "../../../../i18n/routing";
 import BuyNow from "../CreateProductForm/BuyNow";
+import DeleteProduct from "../CreateProductForm/DeleteProduct";
 
 
 
@@ -55,6 +56,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           View Product
         </button>
       </div>
+      <DeleteProduct data-cy="delete-button" id={product.id}/>
     </div>
   );
 }

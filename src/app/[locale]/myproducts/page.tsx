@@ -1,9 +1,11 @@
 import { createClient } from "../../../utils/supabase/server";
 import ProductCard from "../components/ProductsCard/ProductsCard";
 
+
 export default async function Products() {
   const supabase = await createClient();
   const { data, error } = await supabase.from("products").select();
+ 
 
   if (error) {
     return <div>Error fetching products: {error.message}</div>;
