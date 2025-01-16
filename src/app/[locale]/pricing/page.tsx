@@ -16,9 +16,9 @@ export default async function IndexPage({
   <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white py-12 px-6 rounded-lg max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center justify-between">
     
     {/* Left Side: Image */}
-    <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-center">
+    {/* <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-center">
       rame
-    </div>
+    </div> */}
 
     {/* Right Side: Subscription Info */}
     <div className="lg:w-1/2 text-center lg:text-left space-y-6">

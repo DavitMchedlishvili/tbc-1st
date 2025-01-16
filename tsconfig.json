@@ -28,7 +28,7 @@
     "./dist/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/[locale]/components/AddButton/AddButton.tsx", "src/app/[locale]/rame/page.tsx", "src/appsrc/app/[locale]/posts/page.tsx/app/[locale]/components/LogOutButton/LogOut.jsx", "src/app/api/auth/[auth0]/route.js", "tailwind.config.js", "postcss.config.js"  ],
+, "src/app/[locale]/components/AddButton/AddButton.tsx", "src/appsrc/app/[locale]/posts/page.tsx/app/[locale]/components/LogOutButton/LogOut.jsx", "src/app/api/auth/[auth0]/route.js", "tailwind.config.js", "postcss.config.js"  ],
   "exclude": [
     "node_modules"
   ]

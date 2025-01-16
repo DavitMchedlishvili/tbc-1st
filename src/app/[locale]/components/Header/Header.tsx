@@ -18,10 +18,8 @@ const Header = () => {
         <Link className='nav-link' href="/">{t('Home')}</Link>
         <nav >
           <div className='navigation'>
-            <Link className='nav-link' href="/products">{t('Products')}</Link>
-            <Link data-cy="myproduct-link" className='nav-link' href="/myproducts">My Products</Link>
+            <Link data-cy="myproduct-link" className='nav-link' href="/myproducts">{t('Products')}</Link>
             <Link className='nav-link' href="/blog">{t('Blog')}</Link>
-            <Link className='nav-link' href="/posts">{t('Posts')}</Link>
             <Link className='nav-link' href="/about">{t('About')}</Link>
             <Link className='nav-link' href="/contact">{t('Contact Us')}</Link>
             <Link data-cy="create-product-link" className="nav-link" href="/create-product">Create Product</Link>

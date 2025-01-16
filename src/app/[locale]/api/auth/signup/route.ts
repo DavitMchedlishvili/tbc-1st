@@ -1,16 +1,8 @@
-import { defineRouting } from "next-intl/routing";
-import { createNavigation } from "next-intl/navigation";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-export const routing = defineRouting({
-  locales: ["en", "ka"],
-  defaultLocale: "en",
-});
 
-export const { Link, redirect, usePathname, useRouter } =
-  createNavigation(routing);
 
 export async function POST(req: NextRequest) {
   const cookieStore = cookies();
@@ -26,17 +18,15 @@ export async function POST(req: NextRequest) {
     password,
   });
 
-  const locale = cookies().get("locale")?.value || "en";
+  const locale = cookieStore.get("locale")?.value || "en";
 
   if (error) {
     console.error("Login error:", error.message);
 
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
-
-  // If login is successful, redirect to the root path based on the locale
-  return redirect({
-    href: "/",
-    locale,
+  return NextResponse.json({
+    message: "signup successful",
+    redirectTo: `/${locale}/`,
   });
 }

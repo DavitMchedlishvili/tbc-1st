@@ -6,19 +6,17 @@ import { routing } from "./i18n/routing";
 const nextIntlMiddleware = createMiddleware(routing);
 
 export async function middleware(req: NextRequest) {
-  // First, handle internationalization (next-intl)
+
  nextIntlMiddleware(req)
 
-  // Initialize Supabase client for session check
+
   const supabase = createClient();
   const { data, error } = await (await supabase).auth.getSession();
 
-  // Log the request path and session data for debugging
-  console.log("Request Pathname:", req.nextUrl.pathname);
-  console.log("Session Data:", data); // Make sure data and session are correct
+ 
 
   const session = data?.session;
-  console.log(data, session)
+
   const isLoginPage = req.nextUrl.pathname.includes("/login");
   const isRestrictedPage = [
     "/contact",
@@ -32,10 +30,7 @@ export async function middleware(req: NextRequest) {
     "/myproducts",
   ].some((path) => req.nextUrl.pathname.includes(path));
 
-  // Add more logs to see if this condition is met
-  console.log("Session:", session);
-  console.log("Is Restricted Page:", isRestrictedPage);
-  console.log("Is Login Page:", isLoginPage);
+
 
   // If there's no session and trying to access a restricted page
   if (!session && isRestrictedPage && !isLoginPage) {
@@ -61,7 +56,7 @@ export async function middleware(req: NextRequest) {
 
   const intlResponse = await nextIntlMiddleware(req);
   if (intlResponse) {
-  return intlResponse; // If next-intl processes the request, return its response
+  return intlResponse; 
 }
 
   return NextResponse.next();
