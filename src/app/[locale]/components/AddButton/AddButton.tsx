@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import "./AddButton.css";
+import "./addButton.css";
 
 // Define the types for the props
 interface AddButtonProps {
