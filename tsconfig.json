@@ -27,8 +27,14 @@
     "next-env.d.ts",
     "./dist/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/[locale]/components/AddButton/AddButton.tsx", "src/appsrc/app/[locale]/posts/page.tsx/app/[locale]/components/LogOutButton/LogOut.jsx", "src/app/api/auth/[auth0]/route.js", "tailwind.config.js", "postcss.config.js"  ],
+    "**/*.tsx",
+    "src/app/[locale]/components/AddButton/AddButton.tsx",
+    "src/appsrc/app/[locale]/posts/page.tsx/app/[locale]/components/LogOutButton/LogOut.jsx",
+    "src/app/api/auth/[auth0]/route.js",
+    "tailwind.config.js",
+    "postcss.config.js",
+    ".next/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
